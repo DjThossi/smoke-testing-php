@@ -1,6 +1,6 @@
 {
-    "name": "vendor_name/package_name",
-    "description": "description_text",
+    "name": "djthossi/smoke-testing-php",
+    "description": "smoke testing with php",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
