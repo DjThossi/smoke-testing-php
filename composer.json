@@ -10,12 +10,20 @@
             "homepage": "http://www.sebastianthoss.de"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "DjThossi\\": "tests/DjThossi"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
     "require": {
         "php": "~5.6",
         "phpunit/phpunit": "~5.7",
         "php-curl-class/php-curl-class": "7.1.0"
     },
-    "config": {
-        "bin-dir": "bin"
+    "require-dev": {
+        "symfony/var-dumper": "^3.2"
     }
 }
