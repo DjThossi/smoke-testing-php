@@ -1,22 +1,27 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
-class ErrorResult implements ResultInterface
+class ErrorResult implements Result
 {
+    /**
+     * @var Url
+     */
+    private $url;
+
     /**
      * @var string
      */
     private $errorMessage;
 
     /**
+     * @param Url $url
      * @param string $errorMessage
-     *
-     * @throws SmokeTestException
      */
-    public function __construct($errorMessage)
+    public function __construct(Url $url, $errorMessage)
     {
         $this->ensureValidErrorMessage($errorMessage);
 
+        $this->url = $url;
         $this->errorMessage = $errorMessage;
     }
 
@@ -44,5 +49,29 @@ class ErrorResult implements ResultInterface
             );
             throw new SmokeTestException($message);
         }
+    }
+
+    /**
+     * @return Url
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimeToFirstByteInMilliseconds()
+    {
+        return 0;
+    }
+
+    /**
+     * @return null
+     */
+    public function getBody()
+    {
+        return null;
     }
 }

@@ -1,73 +1,36 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
-class ExampleTest extends SmokeTest
+use PHPUnit_Framework_TestCase;
+
+class ExampleTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     * * Is Reachable (StatusCode === 200)
-     * * Response body is not empty
-     * * Time to first byte 100ms or less
-     *
-     * @dataProvider resultProvider
-     *
-     * @param ResultInterface $result
-     */
-    public function testUrl(ResultInterface $result)
-    {
-        $this->assertInstanceOf(Result::class, $result, $result->asFailureMessage());
+    use SmokeTrait;
 
-        /* @var Result $result */
-        $this->assertSame(200, $result->getStatusCode(), $result->asFailureMessage());
-        $this->assertNotEmpty($result->getBody(), $result->asFailureMessage());
-        $this->assertLessThanOrEqual(0.2, $result->getTimeToFirstByte(), $result->asFailureMessage());
+    /**
+     * @dataProvider myDataProvider
+     */
+    public function testExample(Result $result)
+    {
+        $this->assertSuccess($result);
+        $this->assertTimeToFirstByteBelow(new ResponseTimeout(200), $result);
+        $this->assertBodyNotEmpty($result);
     }
 
     /**
-     * @return string
+     * @return ResultCollection
      */
-    protected function getUrlsFile()
+    public function myDataProvider()
     {
-        return __DIR__ . '/../../../data/urls.txt';
-    }
+        $options = new SmokeTestOptions(
+            UrlCollection::fromFile(__DIR__ . '/../../../data/urls.txt'),
+            new Concurrency(10),
+            new FollowRedirect(true),
+            new RequestTimeout(2),
+            new BodyLength(500),
+            new BasicAuth('username', 'password')
+        );
 
-    /**
-     * @return string
-     */
-    protected function getBasicAuthUsername()
-    {
-        return null;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getBasicAuthPassword()
-    {
-        return null;
-    }
-
-    /**
-     * @return int
-     */
-    protected function getMaxCurlTimeoutInSeconds()
-    {
-        return 2;
-    }
-
-    /**
-     * @return int
-     */
-    protected function getMaxParallelRequests()
-    {
-        return 5;
-    }
-
-    /**
-     * @return int
-     */
-    protected function getMaxBodyToPreserve()
-    {
-        return 500;
+        return $this->runSmokeTests($options);
     }
 }
