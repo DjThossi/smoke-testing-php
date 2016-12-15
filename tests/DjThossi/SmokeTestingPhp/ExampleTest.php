@@ -9,6 +9,8 @@ class ExampleTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider myDataProvider
+     *
+     * @param Result $result
      */
     public function testExample(Result $result)
     {
