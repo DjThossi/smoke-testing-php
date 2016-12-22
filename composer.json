@@ -12,7 +12,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "DjThossi\\": "tests/DjThossi"
+            "DjThossi\\": "src/DjThossi",
+            "Unit\\": "tests/Unit"
         }
     },
     "config": {

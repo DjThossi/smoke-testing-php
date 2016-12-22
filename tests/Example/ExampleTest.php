@@ -26,7 +26,7 @@ class ExampleTest extends PHPUnit_Framework_TestCase
     public function myDataProvider()
     {
         $options = new SmokeTestOptions(
-            UrlCollection::fromFile(__DIR__ . '/../../../data/urls.txt'),
+            UrlCollection::fromFile(__DIR__ . '/../../data/urls.txt'),
             new Concurrency(10),
             new FollowRedirect(true),
             new RequestTimeout(2),

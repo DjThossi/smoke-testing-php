@@ -25,6 +25,7 @@ trait SmokeTrait
             $smokeTestOptions->getBasicAuth()
         );
 
+        //TODO ResultCollection
         return $runner->run($runnerOptions);
     }
 
