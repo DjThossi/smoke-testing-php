@@ -1,6 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use PHPUnit_Framework_TestCase;
 
 class ExampleTest extends PHPUnit_Framework_TestCase
