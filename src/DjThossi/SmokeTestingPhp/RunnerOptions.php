@@ -2,6 +2,7 @@
 namespace DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
+use DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect;
 use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
 
 class RunnerOptions

@@ -1,7 +1,6 @@
 <?php
 namespace Example\DjThossi\SmokeTestingPhp;
 
-use DjThossi\SmokeTestingPhp\FollowRedirect;
 use DjThossi\SmokeTestingPhp\ResponseTimeout;
 use DjThossi\SmokeTestingPhp\Result;
 use DjThossi\SmokeTestingPhp\ResultCollection;
@@ -11,6 +10,7 @@ use DjThossi\SmokeTestingPhp\UrlCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
+use DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect;
 use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
 use PHPUnit_Framework_TestCase;
 
