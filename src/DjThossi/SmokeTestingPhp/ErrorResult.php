@@ -67,9 +67,6 @@ class ErrorResult implements Result
         return 0;
     }
 
-    /**
-     * @return null
-     */
     public function getBody()
     {
         return null;

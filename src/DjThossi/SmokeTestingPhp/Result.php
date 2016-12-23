@@ -9,7 +9,7 @@ interface Result
     public function getUrl();
 
     /**
-     * TODO find better name
+     * TODO find better name.
      *
      * @return string
      */
