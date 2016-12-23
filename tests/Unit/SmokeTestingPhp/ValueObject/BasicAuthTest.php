@@ -41,6 +41,9 @@ class BasicAuthTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(BasicAuth::class, $basicAuth);
     }
 
+    /**
+     * @return array
+     */
     public function failingValuesProvider()
     {
         return [

@@ -3,6 +3,7 @@ namespace DjThossi\SmokeTestingPhp;
 
 use Curl\Curl;
 use Curl\MultiCurl;
+use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 
 class CurlHttpRunner implements HttpRunner
 {

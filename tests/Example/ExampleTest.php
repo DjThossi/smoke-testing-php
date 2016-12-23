@@ -2,6 +2,7 @@
 namespace DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
+use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use PHPUnit_Framework_TestCase;
 
 class ExampleTest extends PHPUnit_Framework_TestCase
