@@ -57,7 +57,7 @@ class BasicAuth
     private function ensureUsername($username)
     {
         $this->ensureIsString('Username', InvalidValueException::USERNAME_IS_NOT_A_STRING, $username);
-        $this->ensureIsNotEmpty('Username', InvalidValueException::USERNAME_IS_NOT_EMPTY, $username);
+        $this->ensureIsNotEmpty('Username', InvalidValueException::USERNAME_IS_EMPTY, $username);
     }
 
     /**

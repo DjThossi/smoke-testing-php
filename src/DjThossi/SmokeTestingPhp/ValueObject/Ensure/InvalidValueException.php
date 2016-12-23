@@ -6,6 +6,6 @@ use Exception;
 class InvalidValueException extends Exception
 {
     const USERNAME_IS_NOT_A_STRING = 1;
-    const USERNAME_IS_NOT_EMPTY = 2;
+    const USERNAME_IS_EMPTY = 2;
     const PASSWORD_IS_NOT_A_STRING = 3;
 }
