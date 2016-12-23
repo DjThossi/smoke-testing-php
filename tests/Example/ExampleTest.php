@@ -3,7 +3,6 @@ namespace Example\DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\Concurrency;
 use DjThossi\SmokeTestingPhp\FollowRedirect;
-use DjThossi\SmokeTestingPhp\RequestTimeout;
 use DjThossi\SmokeTestingPhp\ResponseTimeout;
 use DjThossi\SmokeTestingPhp\Result;
 use DjThossi\SmokeTestingPhp\ResultCollection;
@@ -12,6 +11,7 @@ use DjThossi\SmokeTestingPhp\SmokeTrait;
 use DjThossi\SmokeTestingPhp\UrlCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
+use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
 use PHPUnit_Framework_TestCase;
 
 class ExampleTest extends PHPUnit_Framework_TestCase

@@ -9,6 +9,7 @@ class BodyLength
 {
     use EnsureIsIntegerTrait;
     use EnsureIsGreaterThanTrait;
+
     /**
      * @var int
      */
@@ -20,6 +21,7 @@ class BodyLength
     public function __construct($charsToPreserve)
     {
         $this->ensureCharsToPreserve($charsToPreserve);
+
         $this->charsToPreserve = $charsToPreserve;
     }
 
@@ -31,6 +33,9 @@ class BodyLength
         return $this->charsToPreserve;
     }
 
+    /**
+     * @param mixed $charsToPreserve
+     */
     private function ensureCharsToPreserve($charsToPreserve)
     {
         $this->ensureIsInteger(
