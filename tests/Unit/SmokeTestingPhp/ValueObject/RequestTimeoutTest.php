@@ -56,7 +56,7 @@ class RequestTimeoutTest extends PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testCanAsInteger()
+    public function testCanGetInSeconds()
     {
         $inSeconds = 1337;
         $RequestTimeout = new RequestTimeout($inSeconds);

@@ -21,6 +21,7 @@ class RequestTimeout
     public function __construct($inSeconds)
     {
         $this->ensureInSeconds($inSeconds);
+
         $this->inSeconds = $inSeconds;
     }
 
