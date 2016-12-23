@@ -3,3 +3,4 @@
 /vendor/
 composer.phar
 /coverage/
+/.php_cs.cache
