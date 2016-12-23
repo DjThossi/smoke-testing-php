@@ -16,4 +16,6 @@ class InvalidValueException extends Exception
     const CONCURRENCY_IS_NOT_AN_INTEGER = 8;
     const CONCURRENCY_IS_TOO_SMALL = 9;
     const FOLLOW_IS_NOT_A_BOOLEAN = 10;
+    const URL_IS_NOT_A_STRING = 11;
+    const URL_IS_NOT_A_URL = 12;
 }

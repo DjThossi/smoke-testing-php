@@ -1,6 +1,8 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\ValueObject\Url;
+
 class UrlCollection extends BaseCollection
 {
     /**

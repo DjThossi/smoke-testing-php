@@ -4,6 +4,7 @@ namespace DjThossi\SmokeTestingPhp;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect;
 use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
+use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 class RequestOptions
 {

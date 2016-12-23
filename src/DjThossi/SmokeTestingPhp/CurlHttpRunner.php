@@ -5,6 +5,7 @@ use Curl\Curl;
 use Curl\MultiCurl;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
+use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 class CurlHttpRunner implements HttpRunner
 {
