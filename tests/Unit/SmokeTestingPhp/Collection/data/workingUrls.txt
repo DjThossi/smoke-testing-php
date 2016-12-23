@@ -1,0 +1,3 @@
+http://localhost/
+http://localhost/de/
+http://localhost/en/

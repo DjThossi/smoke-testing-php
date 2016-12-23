@@ -1,12 +1,12 @@
 <?php
 namespace Example\DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
 use DjThossi\SmokeTestingPhp\ResponseTimeout;
 use DjThossi\SmokeTestingPhp\Result;
 use DjThossi\SmokeTestingPhp\ResultCollection;
 use DjThossi\SmokeTestingPhp\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\SmokeTestTrait;
-use DjThossi\SmokeTestingPhp\UrlCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;

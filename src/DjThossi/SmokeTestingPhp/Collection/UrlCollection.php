@@ -1,5 +1,5 @@
 <?php
-namespace DjThossi\SmokeTestingPhp;
+namespace DjThossi\SmokeTestingPhp\Collection;
 
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
@@ -15,7 +15,7 @@ class UrlCollection extends BaseCollection
         $urls = file($fileName);
         $urls = array_map('trim', $urls);
 
-        return self::fromArray($urls);
+        return self::fromStrings($urls);
     }
 
     /**
@@ -23,14 +23,28 @@ class UrlCollection extends BaseCollection
      *
      * @return UrlCollection
      */
-    public static function fromArray(array $urls)
+    public static function fromUrls(array $urls)
     {
         $urlCollection = new self();
         foreach ($urls as $url) {
-            $urlCollection->addUrl(new Url($url));
+            $urlCollection->addUrl($url);
         }
 
         return $urlCollection;
+    }
+
+    /**
+     * @param Url[] $urls
+     *
+     * @return UrlCollection
+     */
+    public static function fromStrings(array $urls)
+    {
+        foreach ($urls as &$url) {
+            $url = new Url($url);
+        }
+
+        return self::fromUrls($urls);
     }
 
     /**
@@ -38,14 +52,6 @@ class UrlCollection extends BaseCollection
      */
     public function addUrl(Url $url)
     {
-        $this->elements[$url->asString()] = $url;
-    }
-
-    /**
-     * @return Url[]
-     */
-    public function asArray()
-    {
-        return $this->elements;
+        $this->elements[] = $url;
     }
 }

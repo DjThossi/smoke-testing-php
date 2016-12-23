@@ -1,6 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;

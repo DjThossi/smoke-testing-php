@@ -1,5 +1,5 @@
 <?php
-namespace DjThossi\SmokeTestingPhp;
+namespace DjThossi\SmokeTestingPhp\Collection;
 
 use Countable;
 use Iterator;
