@@ -1,12 +1,14 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
+
 trait SmokeTestTrait
 {
     /**
      * @param SmokeTestOptions $smokeTestOptions
      *
-     * @return ResultCollection
+     * @return array
      */
     protected function runSmokeTests(SmokeTestOptions $smokeTestOptions)
     {
@@ -24,8 +26,24 @@ trait SmokeTestTrait
             $smokeTestOptions->getBasicAuth()
         );
 
-        //TODO ResultCollection
-        return $runner->run($runnerOptions);
+        $resultCollection = $runner->run($runnerOptions);
+
+        return $this->convertResultCollectionToDataProviderArray($resultCollection);
+    }
+
+    /**
+     * @param ResultCollection $resultCollection
+     *
+     * @return array
+     */
+    protected function convertResultCollectionToDataProviderArray(ResultCollection $resultCollection)
+    {
+        $retValue = [];
+        foreach ($resultCollection as $key => $result) {
+            $retValue[$key] = [$result];
+        }
+
+        return $retValue;
     }
 
     /**

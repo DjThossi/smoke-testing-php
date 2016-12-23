@@ -1,6 +1,8 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
+
 interface HttpRunner
 {
     /**

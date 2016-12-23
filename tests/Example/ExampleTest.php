@@ -1,10 +1,10 @@
 <?php
 namespace Example\DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
 use DjThossi\SmokeTestingPhp\ResponseTimeout;
 use DjThossi\SmokeTestingPhp\Result;
-use DjThossi\SmokeTestingPhp\ResultCollection;
 use DjThossi\SmokeTestingPhp\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\SmokeTestTrait;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;

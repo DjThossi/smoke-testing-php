@@ -1,6 +1,8 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
+
 class SmokeTestRunner
 {
     /**
@@ -16,7 +18,7 @@ class SmokeTestRunner
     /**
      * @param RunnerOptions $runnerOptions
      *
-     * @return array
+     * @return ResultCollection
      */
     public function run(RunnerOptions $runnerOptions)
     {
@@ -35,13 +37,6 @@ class SmokeTestRunner
             );
         }
 
-        $resultCollection = $this->httpRunner->run();
-
-        $retValue = [];
-        foreach ($resultCollection as $key => $result) {
-            $retValue[$key] = [$result];
-        }
-
-        return $retValue;
+        return $this->httpRunner->run();
     }
 }
