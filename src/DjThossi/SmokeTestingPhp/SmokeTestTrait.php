@@ -1,7 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
-trait SmokeTrait
+trait SmokeTestTrait
 {
     /**
      * @param SmokeTestOptions $smokeTestOptions
