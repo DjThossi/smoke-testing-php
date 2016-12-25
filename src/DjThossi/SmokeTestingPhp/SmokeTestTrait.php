@@ -79,6 +79,7 @@ trait SmokeTestTrait
      */
     protected function assertBodyNotEmpty(Result $result)
     {
-        $this->assertNotEmpty($result->getBody(), $result->asFailureMessage());
+        $this->assertNotNull($result->getBody(), $result->asFailureMessage());
+        $this->assertNotEmpty($result->getBody()->asString(), $result->asFailureMessage());
     }
 }

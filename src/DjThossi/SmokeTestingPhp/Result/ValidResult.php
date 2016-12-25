@@ -2,6 +2,7 @@
 namespace DjThossi\SmokeTestingPhp\Result;
 
 use DjThossi\SmokeTestingPhp\SmokeTestException;
+use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 class ValidResult implements Result
@@ -12,7 +13,7 @@ class ValidResult implements Result
     private $url;
 
     /**
-     * @var string
+     * @var Body
      */
     private $body;
 
@@ -28,13 +29,12 @@ class ValidResult implements Result
 
     /**
      * @param Url $url
-     * @param string $body
+     * @param Body $body
      * @param float $timeToFirstByte
      * @param int $statusCode
      */
-    public function __construct(Url $url, $body, $timeToFirstByte, $statusCode)
+    public function __construct(Url $url, Body $body, $timeToFirstByte, $statusCode)
     {
-        $this->ensureValidBody($body);
         $this->ensureValidTimeToFirstByte($timeToFirstByte);
         $this->ensureValidStatusCode($statusCode);
 
@@ -53,7 +53,7 @@ class ValidResult implements Result
     }
 
     /**
-     * @return string
+     * @return Body
      */
     public function getBody()
     {
@@ -87,7 +87,7 @@ class ValidResult implements Result
             "StatusCode: %s\nTimeToFirstByte: %u\nBody: %s",
             $this->statusCode,
             $this->timeToFirstByteInMilliseconds,
-            $this->body
+            $this->body->asString()
         );
     }
 
@@ -97,24 +97,6 @@ class ValidResult implements Result
     public function isValidResult()
     {
         return true;
-    }
-
-    /**
-     * @param string $body
-     *
-     * TODO use ensuure
-     *
-     * @throws SmokeTestException
-     */
-    private function ensureValidBody($body)
-    {
-        if (!is_string($body)) {
-            $message = sprintf(
-                'Expected body to be string, got "%s"',
-                is_object($body) ? get_class($body) : gettype($body)
-            );
-            throw new SmokeTestException($message);
-        }
     }
 
     /**

@@ -6,6 +6,7 @@ use Curl\MultiCurl;
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Result\ErrorResult;
 use DjThossi\SmokeTestingPhp\Result\ValidResult;
+use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
@@ -86,7 +87,7 @@ class CurlHttpRunner implements HttpRunner
         $this->results->addResult(
             new ValidResult(
                 new Url($curl->url),
-                $body,
+                new Body($body),
                 $timeToFirstByteInMilliseconds,
                 $curl->httpStatusCode
             )

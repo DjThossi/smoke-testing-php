@@ -1,6 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Result;
 
+use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 interface Result
@@ -23,7 +24,7 @@ interface Result
     public function getTimeToFirstByteInMilliseconds();
 
     /**
-     * @return string|null
+     * @return Body
      */
     public function getBody();
 
