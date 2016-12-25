@@ -41,7 +41,9 @@ trait SmokeTestTrait
     protected function convertResultCollectionToDataProviderArray(ResultCollection $resultCollection)
     {
         $retValue = [];
+        /** @var Result $result */
         foreach ($resultCollection as $key => $result) {
+            $key = sprintf('#%d: %s', $key, $result->getUrl()->asString());
             $retValue[$key] = [$result];
         }
 
