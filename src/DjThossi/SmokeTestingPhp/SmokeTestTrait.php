@@ -3,7 +3,6 @@ namespace DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Result\Result;
-use DjThossi\SmokeTestingPhp\Result\ValidResult;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 
 trait SmokeTestTrait
@@ -56,10 +55,9 @@ trait SmokeTestTrait
      */
     protected function assertSuccess(Result $result)
     {
-        $this->assertTrue($result->isValidResult(), $result->asFailureMessage());
+        $this->assertTrue($result->isValidResult(), $result->asString());
 
-        /* @var ValidResult $result */
-        $this->assertSame(200, $result->getStatusCode()->asInteger(), $result->asFailureMessage());
+        $this->assertSame(200, $result->getStatusCode()->asInteger(), $result->asString());
     }
 
     /**
@@ -71,7 +69,7 @@ trait SmokeTestTrait
         $this->assertLessThanOrEqual(
             $maxTimeToFirstByte->inMilliSeconds(),
             $result->getTimeToFirstByte()->inMilliSeconds(),
-            $result->asFailureMessage()
+            $result->asString()
         );
     }
 
@@ -80,7 +78,7 @@ trait SmokeTestTrait
      */
     protected function assertBodyNotEmpty(Result $result)
     {
-        $this->assertNotNull($result->getBody(), $result->asFailureMessage());
-        $this->assertNotEmpty($result->getBody()->asString(), $result->asFailureMessage());
+        $this->assertNotNull($result->getBody(), $result->asString());
+        $this->assertNotEmpty($result->getBody()->asString(), $result->asString());
     }
 }

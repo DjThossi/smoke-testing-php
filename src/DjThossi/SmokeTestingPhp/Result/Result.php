@@ -2,6 +2,7 @@
 namespace DjThossi\SmokeTestingPhp\Result;
 
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
+use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
@@ -13,11 +14,9 @@ interface Result
     public function getUrl();
 
     /**
-     * TODO find better name.
-     *
      * @return string
      */
-    public function asFailureMessage();
+    public function asString();
 
     /**
      * @return TimeToFirstByte
@@ -28,6 +27,11 @@ interface Result
      * @return Body
      */
     public function getBody();
+
+    /**
+     * @return StatusCode
+     */
+    public function getStatusCode();
 
     /**
      * @return bool

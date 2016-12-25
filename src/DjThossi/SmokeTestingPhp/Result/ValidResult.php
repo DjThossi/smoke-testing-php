@@ -79,7 +79,7 @@ class ValidResult implements Result
      *
      * @return string
      */
-    public function asFailureMessage()
+    public function asString()
     {
         return sprintf(
             "StatusCode: %s\nTimeToFirstByte: %u\nBody: %s",

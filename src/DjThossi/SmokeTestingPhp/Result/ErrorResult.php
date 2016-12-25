@@ -31,7 +31,7 @@ class ErrorResult implements Result
     /**
      * @return string
      */
-    public function asFailureMessage()
+    public function asString()
     {
         return $this->errorMessage;
     }
@@ -68,6 +68,11 @@ class ErrorResult implements Result
     }
 
     public function getBody()
+    {
+        return null;
+    }
+
+    public function getStatusCode()
     {
         return null;
     }
