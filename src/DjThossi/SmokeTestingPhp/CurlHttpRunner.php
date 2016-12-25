@@ -9,6 +9,7 @@ use DjThossi\SmokeTestingPhp\Result\ValidResult;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
+use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
@@ -89,7 +90,7 @@ class CurlHttpRunner implements HttpRunner
                 new Url($curl->url),
                 new Body($body),
                 new TimeToFirstByte($timeToFirstByteInMilliseconds),
-                $curl->httpStatusCode
+                new StatusCode($curl->httpStatusCode)
             )
         );
     }

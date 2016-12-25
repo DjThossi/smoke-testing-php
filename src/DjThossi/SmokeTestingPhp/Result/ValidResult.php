@@ -1,8 +1,8 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Result;
 
-use DjThossi\SmokeTestingPhp\SmokeTestException;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
+use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
@@ -24,7 +24,7 @@ class ValidResult implements Result
     private $timeToFirstByte;
 
     /**
-     * @var int
+     * @var StatusCode
      */
     private $statusCode;
 
@@ -32,12 +32,10 @@ class ValidResult implements Result
      * @param Url $url
      * @param Body $body
      * @param TimeToFirstByte $timeToFirstByte
-     * @param int $statusCode
+     * @param StatusCode $statusCode
      */
-    public function __construct(Url $url, Body $body, TimeToFirstByte $timeToFirstByte, $statusCode)
+    public function __construct(Url $url, Body $body, TimeToFirstByte $timeToFirstByte, StatusCode $statusCode)
     {
-        $this->ensureValidStatusCode($statusCode);
-
         $this->url = $url;
         $this->body = $body;
         $this->timeToFirstByte = $timeToFirstByte;
@@ -61,7 +59,7 @@ class ValidResult implements Result
     }
 
     /**
-     * @return string
+     * @return StatusCode
      */
     public function getStatusCode()
     {
@@ -85,7 +83,7 @@ class ValidResult implements Result
     {
         return sprintf(
             "StatusCode: %s\nTimeToFirstByte: %u\nBody: %s",
-            $this->statusCode,
+            $this->statusCode->asInteger(),
             $this->timeToFirstByte->inMilliSeconds(),
             $this->body->asString()
         );
@@ -97,21 +95,5 @@ class ValidResult implements Result
     public function isValidResult()
     {
         return true;
-    }
-
-    /**
-     * @param int $statusCode
-     *
-     * @throws SmokeTestException
-     */
-    private function ensureValidStatusCode($statusCode)
-    {
-        if (!is_int($statusCode)) {
-            $message = sprintf(
-                'Expected statusCode to be integer, got "%s"',
-                is_object($statusCode) ? get_class($statusCode) : gettype($statusCode)
-            );
-            throw new SmokeTestException($message);
-        }
     }
 }

@@ -59,7 +59,7 @@ trait SmokeTestTrait
         $this->assertTrue($result->isValidResult(), $result->asFailureMessage());
 
         /* @var ValidResult $result */
-        $this->assertSame(200, $result->getStatusCode(), $result->asFailureMessage());
+        $this->assertSame(200, $result->getStatusCode()->asInteger(), $result->asFailureMessage());
     }
 
     /**
