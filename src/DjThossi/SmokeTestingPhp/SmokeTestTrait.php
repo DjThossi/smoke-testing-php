@@ -2,6 +2,8 @@
 namespace DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
+use DjThossi\SmokeTestingPhp\Result\Result;
+use DjThossi\SmokeTestingPhp\Result\ValidResult;
 
 trait SmokeTestTrait
 {

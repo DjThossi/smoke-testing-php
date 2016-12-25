@@ -1,10 +1,9 @@
 <?php
 namespace Example\DjThossi\SmokeTestingPhp;
 
-use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
 use DjThossi\SmokeTestingPhp\ResponseTimeout;
-use DjThossi\SmokeTestingPhp\Result;
+use DjThossi\SmokeTestingPhp\Result\Result;
 use DjThossi\SmokeTestingPhp\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\SmokeTestTrait;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
@@ -31,7 +30,7 @@ class ExampleTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return ResultCollection
+     * @return array
      */
     public function myDataProvider()
     {

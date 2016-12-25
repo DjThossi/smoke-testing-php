@@ -1,7 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Collection;
 
-use DjThossi\SmokeTestingPhp\Result;
+use DjThossi\SmokeTestingPhp\Result\Result;
 
 class ResultCollection extends BaseCollection
 {

@@ -4,6 +4,8 @@ namespace DjThossi\SmokeTestingPhp;
 use Curl\Curl;
 use Curl\MultiCurl;
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
+use DjThossi\SmokeTestingPhp\Result\ErrorResult;
+use DjThossi\SmokeTestingPhp\Result\ValidResult;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;

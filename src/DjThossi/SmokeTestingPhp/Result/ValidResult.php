@@ -1,6 +1,7 @@
 <?php
-namespace DjThossi\SmokeTestingPhp;
+namespace DjThossi\SmokeTestingPhp\Result;
 
+use DjThossi\SmokeTestingPhp\SmokeTestException;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 class ValidResult implements Result
@@ -93,6 +94,8 @@ class ValidResult implements Result
     /**
      * @param string $body
      *
+     * TODO use ensuure
+     *
      * @throws SmokeTestException
      */
     private function ensureValidBody($body)
@@ -108,6 +111,8 @@ class ValidResult implements Result
 
     /**
      * @param float $timeToFirstByte
+     *
+     * TODO use ensuure
      *
      * @throws SmokeTestException
      */

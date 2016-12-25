@@ -1,5 +1,5 @@
 <?php
-namespace DjThossi\SmokeTestingPhp;
+namespace DjThossi\SmokeTestingPhp\Result;
 
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 

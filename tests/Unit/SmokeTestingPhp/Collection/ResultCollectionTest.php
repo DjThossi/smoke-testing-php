@@ -2,7 +2,7 @@
 namespace Unit\DjThossi\SmokeTestingPhp\Collection;
 
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
-use DjThossi\SmokeTestingPhp\Result;
+use DjThossi\SmokeTestingPhp\Result\Result;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 

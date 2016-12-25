@@ -1,6 +1,7 @@
 <?php
-namespace DjThossi\SmokeTestingPhp;
+namespace DjThossi\SmokeTestingPhp\Result;
 
+use DjThossi\SmokeTestingPhp\SmokeTestException;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 class ErrorResult implements Result
@@ -39,6 +40,8 @@ class ErrorResult implements Result
 
     /**
      * @param string $body
+     *
+     * TODO use Proper Ensure Traits
      *
      * @throws SmokeTestException
      */
