@@ -29,7 +29,7 @@ interface Result
     public function getBody();
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isValidResult();
 }

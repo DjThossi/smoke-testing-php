@@ -2,7 +2,6 @@
 namespace Example\DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
-use DjThossi\SmokeTestingPhp\ResponseTimeout;
 use DjThossi\SmokeTestingPhp\Result\Result;
 use DjThossi\SmokeTestingPhp\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\SmokeTestTrait;
@@ -11,6 +10,7 @@ use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect;
 use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
+use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use PHPUnit_Framework_TestCase;
 
 class ExampleTest extends PHPUnit_Framework_TestCase
@@ -25,7 +25,7 @@ class ExampleTest extends PHPUnit_Framework_TestCase
     public function testExample(Result $result)
     {
         $this->assertSuccess($result);
-        $this->assertTimeToFirstByteBelow(new ResponseTimeout(200), $result);
+        $this->assertTimeToFirstByteBelow(new TimeToFirstByte(200), $result);
         $this->assertBodyNotEmpty($result);
     }
 

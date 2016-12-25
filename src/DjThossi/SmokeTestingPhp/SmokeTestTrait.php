@@ -4,6 +4,7 @@ namespace DjThossi\SmokeTestingPhp;
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Result\Result;
 use DjThossi\SmokeTestingPhp\Result\ValidResult;
+use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 
 trait SmokeTestTrait
 {
@@ -62,13 +63,13 @@ trait SmokeTestTrait
     }
 
     /**
-     * @param ResponseTimeout $responseTimeout
+     * @param TimeToFirstByte $timeToFirstByte
      * @param Result $result
      */
-    protected function assertTimeToFirstByteBelow(ResponseTimeout $responseTimeout, Result $result)
+    protected function assertTimeToFirstByteBelow(TimeToFirstByte $timeToFirstByte, Result $result)
     {
         $this->assertLessThanOrEqual(
-            $responseTimeout->inMilliSeconds(),
+            $timeToFirstByte->inMilliSeconds(),
             $result->getTimeToFirstByteInMilliseconds(),
             $result->asFailureMessage()
         );

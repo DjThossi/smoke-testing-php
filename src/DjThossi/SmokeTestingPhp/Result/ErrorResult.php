@@ -78,7 +78,7 @@ class ErrorResult implements Result
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isValidResult()
     {
