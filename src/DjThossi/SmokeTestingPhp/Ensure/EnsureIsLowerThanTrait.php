@@ -1,23 +1,23 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Ensure;
 
-trait EnsureIsGreaterThanTrait
+trait EnsureIsLowerThanTrait
 {
     /**
      * @param string $fieldName
      * @param int $exceptionCode
-     * @param int $minValue
+     * @param int $maxValue
      * @param int $valueToTest
      *
      * @throws InvalidValueException
      */
-    protected function ensureIsGreaterThan($fieldName, $exceptionCode, $minValue, $valueToTest)
+    protected function ensureIsLowerThan($fieldName, $exceptionCode, $maxValue, $valueToTest)
     {
-        if ($valueToTest <= $minValue) {
+        if ($valueToTest >= $maxValue) {
             $message = sprintf(
-                '%s is lower than or equal expected value "%d", got "%d"',
+                '%s is greater than or equal expected value "%d", got "%d"',
                 $fieldName,
-                $minValue,
+                $maxValue,
                 $valueToTest
             );
             throw new InvalidValueException($message, $exceptionCode);
