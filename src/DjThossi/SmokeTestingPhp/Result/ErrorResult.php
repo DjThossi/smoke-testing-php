@@ -29,8 +29,6 @@ class ErrorResult implements Result
     }
 
     /**
-     * Returns a string including statuscode, time to first byte and body.
-     *
      * @return string
      */
     public function asFailureMessage()
@@ -39,18 +37,18 @@ class ErrorResult implements Result
     }
 
     /**
-     * @param string $body
+     * @param string $errorMessage
      *
      * TODO use Proper Ensure Traits
      *
      * @throws SmokeTestException
      */
-    private function ensureValidErrorMessage($body)
+    private function ensureValidErrorMessage($errorMessage)
     {
-        if (!is_string($body)) {
+        if (!is_string($errorMessage)) {
             $message = sprintf(
                 'Expected body to be string, got "%s"',
-                is_object($body) ? get_class($body) : gettype($body)
+                is_object($errorMessage) ? get_class($errorMessage) : gettype($errorMessage)
             );
             throw new SmokeTestException($message);
         }
