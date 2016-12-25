@@ -2,6 +2,7 @@
 namespace DjThossi\SmokeTestingPhp\Result;
 
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
+use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 interface Result
@@ -19,9 +20,9 @@ interface Result
     public function asFailureMessage();
 
     /**
-     * @return int
+     * @return TimeToFirstByte
      */
-    public function getTimeToFirstByteInMilliseconds();
+    public function getTimeToFirstByte();
 
     /**
      * @return Body

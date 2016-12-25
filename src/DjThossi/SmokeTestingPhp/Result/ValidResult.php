@@ -3,6 +3,7 @@ namespace DjThossi\SmokeTestingPhp\Result;
 
 use DjThossi\SmokeTestingPhp\SmokeTestException;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
+use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 class ValidResult implements Result
@@ -18,9 +19,9 @@ class ValidResult implements Result
     private $body;
 
     /**
-     * @var int
+     * @var TimeToFirstByte
      */
-    private $timeToFirstByteInMilliseconds;
+    private $timeToFirstByte;
 
     /**
      * @var int
@@ -30,17 +31,16 @@ class ValidResult implements Result
     /**
      * @param Url $url
      * @param Body $body
-     * @param float $timeToFirstByte
+     * @param TimeToFirstByte $timeToFirstByte
      * @param int $statusCode
      */
-    public function __construct(Url $url, Body $body, $timeToFirstByte, $statusCode)
+    public function __construct(Url $url, Body $body, TimeToFirstByte $timeToFirstByte, $statusCode)
     {
-        $this->ensureValidTimeToFirstByte($timeToFirstByte);
         $this->ensureValidStatusCode($statusCode);
 
         $this->url = $url;
         $this->body = $body;
-        $this->timeToFirstByteInMilliseconds = $timeToFirstByte;
+        $this->timeToFirstByte = $timeToFirstByte;
         $this->statusCode = $statusCode;
     }
 
@@ -69,11 +69,11 @@ class ValidResult implements Result
     }
 
     /**
-     * @return int
+     * @return TimeToFirstByte
      */
-    public function getTimeToFirstByteInMilliseconds()
+    public function getTimeToFirstByte()
     {
-        return $this->timeToFirstByteInMilliseconds;
+        return $this->timeToFirstByte;
     }
 
     /**
@@ -86,7 +86,7 @@ class ValidResult implements Result
         return sprintf(
             "StatusCode: %s\nTimeToFirstByte: %u\nBody: %s",
             $this->statusCode,
-            $this->timeToFirstByteInMilliseconds,
+            $this->timeToFirstByte->inMilliSeconds(),
             $this->body->asString()
         );
     }
@@ -97,24 +97,6 @@ class ValidResult implements Result
     public function isValidResult()
     {
         return true;
-    }
-
-    /**
-     * @param float $timeToFirstByte
-     *
-     * TODO use ensuure
-     *
-     * @throws SmokeTestException
-     */
-    private function ensureValidTimeToFirstByte($timeToFirstByte)
-    {
-        if (!is_float($timeToFirstByte)) {
-            $message = sprintf(
-                'Expected timeToFirstByte to be float, got "%s"',
-                is_object($timeToFirstByte) ? get_class($timeToFirstByte) : gettype($timeToFirstByte)
-            );
-            throw new SmokeTestException($message);
-        }
     }
 
     /**

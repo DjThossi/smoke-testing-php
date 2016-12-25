@@ -64,12 +64,9 @@ class ErrorResult implements Result
         return $this->url;
     }
 
-    /**
-     * @return int
-     */
-    public function getTimeToFirstByteInMilliseconds()
+    public function getTimeToFirstByte()
     {
-        return 0;
+        return null;
     }
 
     public function getBody()

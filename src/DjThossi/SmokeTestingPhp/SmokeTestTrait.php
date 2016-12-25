@@ -63,14 +63,14 @@ trait SmokeTestTrait
     }
 
     /**
-     * @param TimeToFirstByte $timeToFirstByte
+     * @param TimeToFirstByte $maxTimeToFirstByte
      * @param Result $result
      */
-    protected function assertTimeToFirstByteBelow(TimeToFirstByte $timeToFirstByte, Result $result)
+    protected function assertTimeToFirstByteBelow(TimeToFirstByte $maxTimeToFirstByte, Result $result)
     {
         $this->assertLessThanOrEqual(
-            $timeToFirstByte->inMilliSeconds(),
-            $result->getTimeToFirstByteInMilliseconds(),
+            $maxTimeToFirstByte->inMilliSeconds(),
+            $result->getTimeToFirstByte()->inMilliSeconds(),
             $result->asFailureMessage()
         );
     }
