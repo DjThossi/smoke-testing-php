@@ -1,5 +1,5 @@
 <?php
-namespace DjThossi\SmokeTestingPhp\ValueObject\Ensure;
+namespace DjThossi\SmokeTestingPhp\Ensure;
 
 use Exception;
 

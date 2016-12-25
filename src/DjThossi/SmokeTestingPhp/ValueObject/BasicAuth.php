@@ -1,9 +1,9 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\ValueObject\Ensure\EnsureIsNotEmptyTrait;
-use DjThossi\SmokeTestingPhp\ValueObject\Ensure\EnsureIsStringTrait;
-use DjThossi\SmokeTestingPhp\ValueObject\Ensure\InvalidValueException;
+use DjThossi\SmokeTestingPhp\Ensure\EnsureIsNotEmptyTrait;
+use DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait;
+use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 
 class BasicAuth
 {

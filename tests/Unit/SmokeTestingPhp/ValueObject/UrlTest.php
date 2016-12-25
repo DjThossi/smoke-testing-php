@@ -1,15 +1,15 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
+use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
-use DjThossi\SmokeTestingPhp\ValueObject\Ensure\InvalidValueException;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\Url
- * @covers \DjThossi\SmokeTestingPhp\ValueObject\Ensure\EnsureIsStringTrait
- * @covers \DjThossi\SmokeTestingPhp\ValueObject\Ensure\EnsureIsUrlTrait
+ * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait
+ * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsUrlTrait
  */
 class UrlTest extends PHPUnit_Framework_TestCase
 {

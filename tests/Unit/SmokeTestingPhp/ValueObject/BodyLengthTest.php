@@ -1,15 +1,15 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
+use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
-use DjThossi\SmokeTestingPhp\ValueObject\Ensure\InvalidValueException;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\BodyLength
- * @covers \DjThossi\SmokeTestingPhp\ValueObject\Ensure\EnsureIsIntegerTrait
- * @covers \DjThossi\SmokeTestingPhp\ValueObject\Ensure\EnsureIsGreaterThanTrait
+ * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait
+ * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait
  */
 class BodyLengthTest extends PHPUnit_Framework_TestCase
 {

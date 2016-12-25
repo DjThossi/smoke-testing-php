@@ -1,9 +1,9 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\ValueObject\Ensure\EnsureIsGreaterThanTrait;
-use DjThossi\SmokeTestingPhp\ValueObject\Ensure\EnsureIsIntegerTrait;
-use DjThossi\SmokeTestingPhp\ValueObject\Ensure\InvalidValueException;
+use DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait;
+use DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait;
+use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 
 class Concurrency
 {
