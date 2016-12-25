@@ -53,7 +53,7 @@ trait SmokeTestTrait
      */
     protected function assertSuccess(Result $result)
     {
-        $this->assertInstanceOf(ValidResult::class, $result, $result->asFailureMessage());
+        $this->assertTrue($result->isValidResult(), $result->asFailureMessage());
 
         /* @var ValidResult $result */
         $this->assertSame(200, $result->getStatusCode(), $result->asFailureMessage());

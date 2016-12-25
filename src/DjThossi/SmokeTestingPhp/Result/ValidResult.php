@@ -92,6 +92,14 @@ class ValidResult implements Result
     }
 
     /**
+     * @return boolean
+     */
+    public function isValidResult()
+    {
+        return true;
+    }
+
+    /**
      * @param string $body
      *
      * TODO use ensuure

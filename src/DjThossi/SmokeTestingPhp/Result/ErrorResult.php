@@ -76,4 +76,12 @@ class ErrorResult implements Result
     {
         return null;
     }
+
+    /**
+     * @return boolean
+     */
+    public function isValidResult()
+    {
+        return false;
+    }
 }

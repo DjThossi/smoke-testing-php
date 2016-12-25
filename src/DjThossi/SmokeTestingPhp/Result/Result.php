@@ -26,4 +26,9 @@ interface Result
      * @return string|null
      */
     public function getBody();
+
+    /**
+     * @return boolean
+     */
+    public function isValidResult();
 }
