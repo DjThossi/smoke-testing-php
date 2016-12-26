@@ -26,10 +26,6 @@ class SmokeTest
     public function run(RunnerOptions $runnerOptions)
     {
         foreach ($runnerOptions->getUrls() as $url) {
-            //TODO log only with parameter
-            //TODO move in Sucess and error
-            echo '.';
-
             $this->httpRunner->addRequest(
                 new RequestOptions(
                     $url,
