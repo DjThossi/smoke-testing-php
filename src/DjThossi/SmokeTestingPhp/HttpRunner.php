@@ -2,6 +2,7 @@
 namespace DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
+use DjThossi\SmokeTestingPhp\Options\RequestOptions;
 
 interface HttpRunner
 {
