@@ -1,2 +1,2 @@
 http://www.example.com
-http://www.example.com/foo
+http://www.example.com/

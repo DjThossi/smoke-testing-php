@@ -13,7 +13,7 @@ use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use PHPUnit_Framework_TestCase;
 
-class ExampleTest extends PHPUnit_Framework_TestCase
+class SimpleExampleTest extends PHPUnit_Framework_TestCase
 {
     use SmokeTestTrait;
 
@@ -34,8 +34,13 @@ class ExampleTest extends PHPUnit_Framework_TestCase
      */
     public function myDataProvider()
     {
+        $urls = [
+            'http://www.example.com',
+            'http://www.example.com/'
+        ];
+
         $options = new SmokeTestOptions(
-            UrlCollection::fromFile(__DIR__ . '/data/urls.txt'),
+            UrlCollection::fromStrings($urls),
             new RequestTimeout(2),
             new FollowRedirect(true),
             new Concurrency(10),
