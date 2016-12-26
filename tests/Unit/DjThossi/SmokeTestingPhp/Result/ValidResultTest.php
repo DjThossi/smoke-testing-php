@@ -1,5 +1,5 @@
 <?php
-namespace Unit\SmokeTestingPhp\Result;
+namespace Unit\DjThossi\SmokeTestingPhp\Result;
 
 use DjThossi\SmokeTestingPhp\Result\ValidResult;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
