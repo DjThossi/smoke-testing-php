@@ -1,5 +1,6 @@
 # Smoke Testing PHP
-This library is suppose to help you doing proper SmokeTests.
+This repository is maintained by [Sebastian Thoss](http://www.sebastianthoss.de).
+The Smoke Testing PHP library is suppose to help you doing proper SmokeTests.
 
 ## Example Code
 In following directory you'll find example code how to use this tool.
