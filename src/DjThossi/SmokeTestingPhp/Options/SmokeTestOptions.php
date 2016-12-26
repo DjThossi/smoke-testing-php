@@ -16,9 +16,9 @@ class SmokeTestOptions
     private $urls;
 
     /**
-     * @var Concurrency
+     * @var RequestTimeout
      */
-    private $concurrency;
+    private $requestTimeout;
 
     /**
      * @var FollowRedirect
@@ -26,9 +26,9 @@ class SmokeTestOptions
     private $followRedirect;
 
     /**
-     * @var RequestTimeout
+     * @var Concurrency
      */
-    private $requestTimeout;
+    private $concurrency;
 
     /**
      * @var BodyLength
@@ -42,24 +42,24 @@ class SmokeTestOptions
 
     /**
      * @param UrlCollection $urls
-     * @param Concurrency $concurrency
-     * @param FollowRedirect $followRedirect
      * @param RequestTimeout $requestTimeout
+     * @param FollowRedirect $followRedirect
+     * @param Concurrency $concurrency
      * @param BodyLength $bodyLength
      * @param BasicAuth|null $basicAuth
      */
     public function __construct(
         UrlCollection $urls,
-        Concurrency $concurrency,
-        FollowRedirect $followRedirect,
         RequestTimeout $requestTimeout,
+        FollowRedirect $followRedirect,
+        Concurrency $concurrency,
         BodyLength $bodyLength,
         BasicAuth $basicAuth = null
     ) {
         $this->urls = $urls;
-        $this->concurrency = $concurrency;
-        $this->followRedirect = $followRedirect;
         $this->requestTimeout = $requestTimeout;
+        $this->followRedirect = $followRedirect;
+        $this->concurrency = $concurrency;
         $this->bodyLength = $bodyLength;
         $this->basicAuth = $basicAuth;
     }
@@ -73,11 +73,11 @@ class SmokeTestOptions
     }
 
     /**
-     * @return Concurrency
+     * @return RequestTimeout
      */
-    public function getConcurrency()
+    public function getRequestTimeout()
     {
-        return $this->concurrency;
+        return $this->requestTimeout;
     }
 
     /**
@@ -89,11 +89,11 @@ class SmokeTestOptions
     }
 
     /**
-     * @return RequestTimeout
+     * @return Concurrency
      */
-    public function getRequestTimeout()
+    public function getConcurrency()
     {
-        return $this->requestTimeout;
+        return $this->concurrency;
     }
 
     /**

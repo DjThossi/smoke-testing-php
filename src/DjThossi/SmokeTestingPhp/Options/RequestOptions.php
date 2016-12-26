@@ -16,7 +16,7 @@ class RequestOptions
     /**
      * @var RequestTimeout
      */
-    private $timeout;
+    private $requestTimeout;
 
     /**
      * @var FollowRedirect
@@ -30,18 +30,18 @@ class RequestOptions
 
     /**
      * @param $url
-     * @param RequestTimeout $timeout
+     * @param RequestTimeout $requestTimeout
      * @param FollowRedirect $followRedirect
      * @param BasicAuth|null $basicAuth
      */
     public function __construct(
         Url $url,
-        RequestTimeout $timeout,
+        RequestTimeout $requestTimeout,
         FollowRedirect $followRedirect,
         BasicAuth $basicAuth = null
     ) {
         $this->url = $url;
-        $this->timeout = $timeout;
+        $this->requestTimeout = $requestTimeout;
         $this->followRedirect = $followRedirect;
         $this->basicAuth = $basicAuth;
     }
@@ -57,9 +57,9 @@ class RequestOptions
     /**
      * @return RequestTimeout
      */
-    public function getTimeout()
+    public function getRequestTimeout()
     {
-        return $this->timeout;
+        return $this->requestTimeout;
     }
 
     /**

@@ -26,8 +26,8 @@ trait SmokeTestTrait
 
         $runnerOptions = new RunnerOptions(
             $smokeTestOptions->getUrls(),
-            $smokeTestOptions->getFollowRedirect(),
             $smokeTestOptions->getRequestTimeout(),
+            $smokeTestOptions->getFollowRedirect(),
             $smokeTestOptions->getBasicAuth()
         );
 

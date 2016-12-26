@@ -52,7 +52,7 @@ class CurlHttpRunner implements HttpRunner
     {
         $curl = new Curl();
         $curl->setUrl($requestOptions->getUrl()->asString());
-        $curl->setTimeout($requestOptions->getTimeout()->inSeconds());
+        $curl->setTimeout($requestOptions->getRequestTimeout()->inSeconds());
         $curl->setOpt(CURLOPT_FOLLOWLOCATION, $requestOptions->getFollowRedirect()->asBoolean());
 
         if ($requestOptions->needsBasicAuth()) {

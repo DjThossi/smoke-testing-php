@@ -14,14 +14,14 @@ class RunnerOptions
     private $urls;
 
     /**
-     * @var FollowRedirect
-     */
-    private $followRedirect;
-
-    /**
      * @var RequestTimeout
      */
     private $requestTimeout;
+
+    /**
+     * @var FollowRedirect
+     */
+    private $followRedirect;
 
     /**
      * @var BasicAuth|null
@@ -30,19 +30,19 @@ class RunnerOptions
 
     /**
      * @param UrlCollection $urls
-     * @param FollowRedirect $followRedirect
      * @param RequestTimeout $requestTimeout
+     * @param FollowRedirect $followRedirect
      * @param BasicAuth|null $basicAuth
      */
     public function __construct(
         UrlCollection $urls,
-        FollowRedirect $followRedirect,
         RequestTimeout $requestTimeout,
+        FollowRedirect $followRedirect,
         BasicAuth $basicAuth = null
     ) {
         $this->urls = $urls;
-        $this->followRedirect = $followRedirect;
         $this->requestTimeout = $requestTimeout;
+        $this->followRedirect = $followRedirect;
         $this->basicAuth = $basicAuth;
     }
 
@@ -55,19 +55,19 @@ class RunnerOptions
     }
 
     /**
-     * @return FollowRedirect
-     */
-    public function getFollowRedirect()
-    {
-        return $this->followRedirect;
-    }
-
-    /**
      * @return RequestTimeout
      */
     public function getRequestTimeout()
     {
         return $this->requestTimeout;
+    }
+
+    /**
+     * @return FollowRedirect
+     */
+    public function getFollowRedirect()
+    {
+        return $this->followRedirect;
     }
 
     /**

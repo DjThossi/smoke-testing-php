@@ -36,9 +36,9 @@ class ExampleTest extends PHPUnit_Framework_TestCase
     {
         $options = new SmokeTestOptions(
             UrlCollection::fromFile(__DIR__ . '/data/urls.txt'),
-            new Concurrency(10),
-            new FollowRedirect(true),
             new RequestTimeout(2),
+            new FollowRedirect(true),
+            new Concurrency(10),
             new BodyLength(500),
             new BasicAuth('username', 'password')
         );
