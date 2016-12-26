@@ -2,6 +2,7 @@
 namespace DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
+use DjThossi\SmokeTestingPhp\Options\RunnerOptions;
 use DjThossi\SmokeTestingPhp\Result\Result;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 

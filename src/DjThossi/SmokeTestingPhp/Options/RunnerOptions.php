@@ -1,5 +1,5 @@
 <?php
-namespace DjThossi\SmokeTestingPhp;
+namespace DjThossi\SmokeTestingPhp\Options;
 
 use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
