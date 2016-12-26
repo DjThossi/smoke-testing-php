@@ -1,5 +1,5 @@
 <?php
-namespace DjThossi\SmokeTestingPhp;
+namespace DjThossi\SmokeTestingPhp\Runner;
 
 use Curl\Curl;
 use Curl\MultiCurl;
@@ -7,7 +7,6 @@ use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RequestOptions;
 use DjThossi\SmokeTestingPhp\Result\ErrorResult;
 use DjThossi\SmokeTestingPhp\Result\ValidResult;
-use DjThossi\SmokeTestingPhp\Runner\HttpRunner;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;

@@ -5,6 +5,7 @@ use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RunnerOptions;
 use DjThossi\SmokeTestingPhp\Options\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\Result\Result;
+use DjThossi\SmokeTestingPhp\Runner\CurlHttpRunner;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 
 trait SmokeTestTrait
