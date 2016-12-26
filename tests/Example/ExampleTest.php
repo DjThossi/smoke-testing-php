@@ -2,8 +2,8 @@
 namespace Example\DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
+use DjThossi\SmokeTestingPhp\Options\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\Result\Result;
-use DjThossi\SmokeTestingPhp\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\SmokeTestTrait;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
