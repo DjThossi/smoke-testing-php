@@ -9,6 +9,7 @@ use DjThossi\SmokeTestingPhp\Result\ValidResult;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
+use DjThossi\SmokeTestingPhp\ValueObject\ErrorMessage;
 use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
@@ -100,15 +101,18 @@ class CurlHttpRunner implements HttpRunner
      */
     public function onError(Curl $curl)
     {
-        $this->results->addResult(
-            new ErrorResult(
-                new Url($curl->url),
-                sprintf(
-                    'Curl Code: %s Error: %s',
-                    $curl->errorCode,
-                    $curl->errorMessage
-                )
+        $url = new Url($curl->url);
+
+        $errorMessage = new ErrorMessage(
+            sprintf(
+                'Curl Code: %s Error: %s',
+                $curl->errorCode,
+                $curl->errorMessage
             )
         );
+
+        $errorResult = new ErrorResult($url, $errorMessage);
+
+        $this->results->addResult($errorResult);
     }
 }
