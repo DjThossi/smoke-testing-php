@@ -13,6 +13,8 @@
     "autoload": {
         "psr-4": {
             "DjThossi\\": "src/DjThossi",
+            "Example\\": "tests/Example",
+            "Integration\\": "tests/Integration",
             "Unit\\": "tests/Unit"
         }
     },
