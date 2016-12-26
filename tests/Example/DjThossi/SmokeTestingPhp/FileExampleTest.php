@@ -25,7 +25,7 @@ class FileExampleTest extends PHPUnit_Framework_TestCase
     public function testExample(Result $result)
     {
         $this->assertSuccess($result);
-        $this->assertTimeToFirstByteBelow(new TimeToFirstByte(200), $result);
+        $this->assertTimeToFirstByteBelow(new TimeToFirstByte(2000), $result);
         $this->assertBodyNotEmpty($result);
     }
 

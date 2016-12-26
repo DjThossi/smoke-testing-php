@@ -22,6 +22,7 @@ class SmokeTestTest extends PHPUnit_Framework_TestCase
         $smokeTest = new SmokeTest($this->getHttpRunnerMock());
         $this->assertInstanceOf(SmokeTest::class, $smokeTest);
     }
+
     public function testCanRun()
     {
         $urlMock = $this->getUrlMock();

@@ -81,10 +81,6 @@ class CurlHttpRunner implements HttpRunner
      */
     public function onSuccess(Curl $curl)
     {
-        //TODO log only with parameter
-        //TODO move in Sucess and error
-        echo '.';
-
         $curlInfo = $curl->getInfo();
         $timeToFirstByte = $curlInfo['starttransfer_time'] - $curlInfo['pretransfer_time'];
         $timeToFirstByteInMilliseconds = (int) round($timeToFirstByte * 1000);
@@ -106,10 +102,6 @@ class CurlHttpRunner implements HttpRunner
      */
     public function onError(Curl $curl)
     {
-        //TODO log only with parameter
-        //TODO move in Sucess and error
-        echo '.';
-
         $url = new Url($curl->url);
 
         $errorMessage = new ErrorMessage(
