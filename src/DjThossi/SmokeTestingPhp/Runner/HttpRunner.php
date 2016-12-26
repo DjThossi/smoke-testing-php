@@ -1,5 +1,5 @@
 <?php
-namespace DjThossi\SmokeTestingPhp;
+namespace DjThossi\SmokeTestingPhp\Runner;
 
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RequestOptions;

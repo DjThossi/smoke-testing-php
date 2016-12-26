@@ -4,6 +4,7 @@ namespace DjThossi\SmokeTestingPhp;
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RequestOptions;
 use DjThossi\SmokeTestingPhp\Options\RunnerOptions;
+use DjThossi\SmokeTestingPhp\Runner\HttpRunner;
 
 class SmokeTestRunner
 {
