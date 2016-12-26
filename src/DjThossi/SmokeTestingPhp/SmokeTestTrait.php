@@ -22,7 +22,7 @@ trait SmokeTestTrait
             $smokeTestOptions->getBodyLength()
         );
 
-        $runner = new SmokeTestRunner($httpRunner);
+        $runner = new SmokeTest($httpRunner);
 
         $runnerOptions = new RunnerOptions(
             $smokeTestOptions->getUrls(),

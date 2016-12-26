@@ -6,7 +6,7 @@ use DjThossi\SmokeTestingPhp\Options\RequestOptions;
 use DjThossi\SmokeTestingPhp\Options\RunnerOptions;
 use DjThossi\SmokeTestingPhp\Runner\HttpRunner;
 
-class SmokeTestRunner
+class SmokeTest
 {
     /**
      * @var HttpRunner
