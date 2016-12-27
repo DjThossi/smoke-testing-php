@@ -12,7 +12,7 @@ trait EnsureIsIntegerTrait
      */
     protected function ensureIsInteger($fieldName, $exceptionCode, $valueToTest)
     {
-        if (!is_integer($valueToTest)) {
+        if (!is_int($valueToTest)) {
             $type = is_object($valueToTest) ? get_class($valueToTest) : gettype($valueToTest);
             $message = sprintf('%s is not an integer, got "%s"', $fieldName, $type);
             throw new InvalidValueException($message, $exceptionCode);
