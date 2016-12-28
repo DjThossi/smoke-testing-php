@@ -52,7 +52,7 @@ class RequestTimeoutTest extends PHPUnit_Framework_TestCase
             'InSeconds is false' => [false, InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
             'InSeconds is object' => [new stdClass(), InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
             'InSeconds is empty' => ['', InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
-            'InSeconds is to small' => [-1, InvalidValueException::IN_SECONDS_IS_TOO_SMALL],
+            'InSeconds is to small' => [-1, RequestTimeout::IN_SECONDS_IS_TOO_SMALL],
         ];
     }
 

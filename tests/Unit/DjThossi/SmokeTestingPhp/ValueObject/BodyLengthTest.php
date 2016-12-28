@@ -52,7 +52,7 @@ class BodyLengthTest extends PHPUnit_Framework_TestCase
             'CharsToPreserve is false' => [false, InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
             'CharsToPreserve is object' => [new stdClass(), InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
             'CharsToPreserve is empty' => ['', InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is to small' => [-1, InvalidValueException::CHARS_TO_PRESERVE_IS_TOO_SMALL],
+            'CharsToPreserve is to small' => [-1, BodyLength::CHARS_TO_PRESERVE_IS_TOO_SMALL],
         ];
     }
 

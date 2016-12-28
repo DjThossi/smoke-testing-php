@@ -10,6 +10,8 @@ class RequestTimeout
     use EnsureIsIntegerTrait;
     use EnsureIsGreaterThanTrait;
 
+    const IN_SECONDS_IS_TOO_SMALL = 2;
+
     /**
      * @var int
      */
@@ -46,9 +48,9 @@ class RequestTimeout
 
         $this->ensureIsGreaterThan(
             'InSeconds',
-            InvalidValueException::IN_SECONDS_IS_TOO_SMALL,
             -1,
-            $inSeconds
+            $inSeconds,
+            self::IN_SECONDS_IS_TOO_SMALL
         );
     }
 }

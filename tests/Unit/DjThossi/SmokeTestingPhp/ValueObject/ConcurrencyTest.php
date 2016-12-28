@@ -46,7 +46,7 @@ class ConcurrencyTest extends PHPUnit_Framework_TestCase
             'Concurrency is false' => [false, InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
             'Concurrency is object' => [new stdClass(), InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
             'Concurrency is empty' => ['', InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is to small' => [0, InvalidValueException::CONCURRENCY_IS_TOO_SMALL],
+            'Concurrency is to small' => [0, Concurrency::CONCURRENCY_IS_TOO_SMALL],
         ];
     }
 

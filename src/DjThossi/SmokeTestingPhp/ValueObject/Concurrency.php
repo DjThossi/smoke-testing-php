@@ -10,6 +10,8 @@ class Concurrency
     use EnsureIsIntegerTrait;
     use EnsureIsGreaterThanTrait;
 
+    const CONCURRENCY_IS_TOO_SMALL = 2;
+
     /**
      * @var int
      */
@@ -46,9 +48,9 @@ class Concurrency
 
         $this->ensureIsGreaterThan(
             'Concurrency',
-            InvalidValueException::CONCURRENCY_IS_TOO_SMALL,
             0,
-            $concurrency
+            $concurrency,
+            self::CONCURRENCY_IS_TOO_SMALL
         );
     }
 }

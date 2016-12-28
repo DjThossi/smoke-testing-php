@@ -10,6 +10,8 @@ class BodyLength
     use EnsureIsIntegerTrait;
     use EnsureIsGreaterThanTrait;
 
+    const CHARS_TO_PRESERVE_IS_TOO_SMALL = 2;
+
     /**
      * @var int
      */
@@ -46,9 +48,9 @@ class BodyLength
 
         $this->ensureIsGreaterThan(
             'CharsToPreserve',
-            InvalidValueException::CHARS_TO_PRESERVE_IS_TOO_SMALL,
             -1,
-            $charsToPreserve
+            $charsToPreserve,
+            self::CHARS_TO_PRESERVE_IS_TOO_SMALL
         );
     }
 }

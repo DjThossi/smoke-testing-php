@@ -45,6 +45,6 @@ class StatusCode
     {
         $this->ensureIsInteger('StatusCode', self::STATUS_CODE_IS_NOT_AN_INTEGER, $statusCode);
         $this->ensureIsLowerThan('StatusCode', self::STATUS_CODE_IS_TOO_BIG, 512, $statusCode);
-        $this->ensureIsGreaterThan('StatusCode', self::STATUS_CODE_IS_TOO_SMALL, 99, $statusCode);
+        $this->ensureIsGreaterThan('StatusCode', 99, $statusCode, self::STATUS_CODE_IS_TOO_SMALL);
     }
 }
