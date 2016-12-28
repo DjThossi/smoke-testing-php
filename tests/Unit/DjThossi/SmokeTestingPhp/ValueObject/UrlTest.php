@@ -45,8 +45,8 @@ class UrlTest extends PHPUnit_Framework_TestCase
             'Url is true' => [true, Url::URL_IS_NOT_A_STRING],
             'Url is false' => [false, Url::URL_IS_NOT_A_STRING],
             'Url is object' => [new stdClass(), Url::URL_IS_NOT_A_STRING],
-            'Url is empty' => ['', InvalidValueException::URL_IS_NOT_A_URL],
-            'Url is String' => ['username', InvalidValueException::URL_IS_NOT_A_URL],
+            'Url is empty' => ['', Url::URL_IS_NOT_A_URL],
+            'Url is String' => ['username', Url::URL_IS_NOT_A_URL],
         ];
     }
 

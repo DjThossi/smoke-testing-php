@@ -5,12 +5,12 @@ trait EnsureIsUrlTrait
 {
     /**
      * @param string $fieldName
-     * @param int $exceptionCode
      * @param mixed $valueToTest
+     * @param int $exceptionCode
      *
      * @throws InvalidValueException
      */
-    protected function ensureIsUrl($fieldName, $exceptionCode, $valueToTest)
+    protected function ensureIsUrl($fieldName, $valueToTest, $exceptionCode = 0)
     {
         $regex = '@^(https?|ftp)://[^\s/$.?#].[^\s]*$@iS';
 
