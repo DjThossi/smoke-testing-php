@@ -3,13 +3,13 @@ namespace DjThossi\SmokeTestingPhp\ValueObject;
 
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait;
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait;
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 
 class BodyLength
 {
     use EnsureIsIntegerTrait;
     use EnsureIsGreaterThanTrait;
 
+    const CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER = 1;
     const CHARS_TO_PRESERVE_IS_TOO_SMALL = 2;
 
     /**
@@ -42,8 +42,8 @@ class BodyLength
     {
         $this->ensureIsInteger(
             'CharsToPreserve',
-            InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER,
-            $charsToPreserve
+            $charsToPreserve,
+            self::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER
         );
 
         $this->ensureIsGreaterThan(

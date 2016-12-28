@@ -40,12 +40,12 @@ class ConcurrencyTest extends PHPUnit_Framework_TestCase
     public function failingValuesProvider()
     {
         return [
-            'Concurrency is String' => ['Hello World', InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is Float' => [1.337, InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is true' => [true, InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is false' => [false, InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is object' => [new stdClass(), InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is empty' => ['', InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is String' => ['Hello World', Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is Float' => [1.337, Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is true' => [true, Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is false' => [false, Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is object' => [new stdClass(), Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is empty' => ['', Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
             'Concurrency is to small' => [0, Concurrency::CONCURRENCY_IS_TOO_SMALL],
         ];
     }

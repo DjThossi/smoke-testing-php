@@ -46,12 +46,12 @@ class BodyLengthTest extends PHPUnit_Framework_TestCase
     public function failingValuesProvider()
     {
         return [
-            'CharsToPreserve is String' => ['Hello World', InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is Float' => [1.337, InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is true' => [true, InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is false' => [false, InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is object' => [new stdClass(), InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is empty' => ['', InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is String' => ['Hello World', BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is Float' => [1.337, BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is true' => [true, BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is false' => [false, BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is object' => [new stdClass(), BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is empty' => ['', BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
             'CharsToPreserve is to small' => [-1, BodyLength::CHARS_TO_PRESERVE_IS_TOO_SMALL],
         ];
     }

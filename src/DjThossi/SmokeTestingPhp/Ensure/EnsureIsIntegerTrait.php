@@ -5,12 +5,12 @@ trait EnsureIsIntegerTrait
 {
     /**
      * @param string $fieldName
-     * @param int $exceptionCode
      * @param mixed $valueToTest
+     * @param int $exceptionCode
      *
      * @throws InvalidValueException
      */
-    protected function ensureIsInteger($fieldName, $exceptionCode, $valueToTest)
+    protected function ensureIsInteger($fieldName, $valueToTest, $exceptionCode = 0)
     {
         if (!is_int($valueToTest)) {
             $type = is_object($valueToTest) ? get_class($valueToTest) : gettype($valueToTest);

@@ -3,13 +3,13 @@ namespace DjThossi\SmokeTestingPhp\ValueObject;
 
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait;
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait;
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 
 class RequestTimeout
 {
     use EnsureIsIntegerTrait;
     use EnsureIsGreaterThanTrait;
 
+    const IN_SECONDS_IS_NOT_AN_INTEGER = 1;
     const IN_SECONDS_IS_TOO_SMALL = 2;
 
     /**
@@ -42,8 +42,8 @@ class RequestTimeout
     {
         $this->ensureIsInteger(
             'InSeconds',
-            InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER,
-            $inSeconds
+            $inSeconds,
+            self::IN_SECONDS_IS_NOT_AN_INTEGER
         );
 
         $this->ensureIsGreaterThan(

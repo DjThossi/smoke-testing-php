@@ -3,13 +3,13 @@ namespace DjThossi\SmokeTestingPhp\ValueObject;
 
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait;
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait;
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 
 class Concurrency
 {
     use EnsureIsIntegerTrait;
     use EnsureIsGreaterThanTrait;
 
+    const CONCURRENCY_IS_NOT_AN_INTEGER = 1;
     const CONCURRENCY_IS_TOO_SMALL = 2;
 
     /**
@@ -42,8 +42,8 @@ class Concurrency
     {
         $this->ensureIsInteger(
             'Concurrency',
-            InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER,
-            $concurrency
+            $concurrency,
+            self::CONCURRENCY_IS_NOT_AN_INTEGER
         );
 
         $this->ensureIsGreaterThan(

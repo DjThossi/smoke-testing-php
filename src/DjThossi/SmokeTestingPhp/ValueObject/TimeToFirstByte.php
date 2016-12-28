@@ -40,7 +40,7 @@ class TimeToFirstByte
      */
     private function ensureInMilliseconds($inMilliseconds)
     {
-        $this->ensureIsInteger('InMilliseconds', self::IN_MILLISECONDS_IS_NOT_AN_INTEGER, $inMilliseconds);
+        $this->ensureIsInteger('InMilliseconds', $inMilliseconds, self::IN_MILLISECONDS_IS_NOT_AN_INTEGER);
         $this->ensureIsGreaterThan('InMilliseconds', 0, $inMilliseconds, self::IN_MILLISECONDS_IS_TOO_SMALL);
     }
 }
