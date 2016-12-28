@@ -5,12 +5,12 @@ trait EnsureIsStringTrait
 {
     /**
      * @param string $fieldName
-     * @param int $exceptionCode
      * @param mixed $valueToTest
+     * @param int $exceptionCode
      *
      * @throws InvalidValueException
      */
-    protected function ensureIsString($fieldName, $exceptionCode, $valueToTest)
+    protected function ensureIsString($fieldName, $valueToTest, $exceptionCode = 0)
     {
         if (!is_string($valueToTest)) {
             $type = is_object($valueToTest) ? get_class($valueToTest) : gettype($valueToTest);

@@ -37,6 +37,6 @@ class Body
      */
     private function ensureBody($body)
     {
-        $this->ensureIsString('Body', self::BODY_IS_NOT_A_STRING, $body);
+        $this->ensureIsString('Body', $body, self::BODY_IS_NOT_A_STRING);
     }
 }

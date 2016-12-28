@@ -9,6 +9,8 @@ class Url
 {
     use EnsureIsStringTrait;
     use EnsureIsUrlTrait;
+
+    const URL_IS_NOT_A_STRING = 1;
     /**
      * @var string
      */
@@ -37,7 +39,7 @@ class Url
      */
     private function ensureUrl($url)
     {
-        $this->ensureIsString('Url', InvalidValueException::URL_IS_NOT_A_STRING, $url);
+        $this->ensureIsString('Url', $url, self::URL_IS_NOT_A_STRING);
         $this->ensureIsUrl('Url', InvalidValueException::URL_IS_NOT_A_URL, $url);
     }
 }

@@ -40,7 +40,7 @@ class ErrorMessage
      */
     private function ensureMessage($message)
     {
-        $this->ensureIsString('Message', self::MESSAGE_IS_NOT_A_STRING, $message);
+        $this->ensureIsString('Message', $message, self::MESSAGE_IS_NOT_A_STRING);
         $this->ensureIsNotEmpty('Message', $message, self::MESSAGE_IS_EMPTY);
     }
 }

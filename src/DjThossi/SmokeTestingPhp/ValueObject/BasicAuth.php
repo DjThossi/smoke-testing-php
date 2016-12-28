@@ -3,14 +3,15 @@ namespace DjThossi\SmokeTestingPhp\ValueObject;
 
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsNotEmptyTrait;
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait;
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 
 class BasicAuth
 {
     use EnsureIsStringTrait;
     use EnsureIsNotEmptyTrait;
 
+    const USERNAME_IS_NOT_A_STRING = 1;
     const USERNAME_IS_EMPTY = 2;
+    const PASSWORD_IS_NOT_A_STRING = 3;
 
     /**
      * @var string
@@ -53,12 +54,10 @@ class BasicAuth
 
     /**
      * @param mixed $username
-     *
-     * @throws InvalidValueException
      */
     private function ensureUsername($username)
     {
-        $this->ensureIsString('Username', InvalidValueException::USERNAME_IS_NOT_A_STRING, $username);
+        $this->ensureIsString('Username', $username, self::USERNAME_IS_NOT_A_STRING);
         $this->ensureIsNotEmpty('Username', $username, self::USERNAME_IS_EMPTY);
     }
 
@@ -67,6 +66,6 @@ class BasicAuth
      */
     private function ensurePassword($password)
     {
-        $this->ensureIsString('Password', InvalidValueException::PASSWORD_IS_NOT_A_STRING, $password);
+        $this->ensureIsString('Password', $password, self::PASSWORD_IS_NOT_A_STRING);
     }
 }
