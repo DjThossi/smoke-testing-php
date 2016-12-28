@@ -5,13 +5,13 @@ trait EnsureIsLowerThanTrait
 {
     /**
      * @param string $fieldName
-     * @param int $exceptionCode
      * @param int $maxValue
      * @param int $valueToTest
+     * @param int $exceptionCode
      *
      * @throws InvalidValueException
      */
-    protected function ensureIsLowerThan($fieldName, $exceptionCode, $maxValue, $valueToTest)
+    protected function ensureIsLowerThan($fieldName, $maxValue, $valueToTest, $exceptionCode = 0)
     {
         if ($valueToTest >= $maxValue) {
             $message = sprintf(
