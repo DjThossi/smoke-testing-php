@@ -5,12 +5,12 @@ trait EnsureIsNotEmptyTrait
 {
     /**
      * @param string $fieldName
-     * @param int $exceptionCode
      * @param mixed $valueToTest
+     * @param int $exceptionCode
      *
      * @throws InvalidValueException
      */
-    protected function ensureIsNotEmpty($fieldName, $exceptionCode, $valueToTest)
+    protected function ensureIsNotEmpty($fieldName, $valueToTest, $exceptionCode = 0)
     {
         if (empty($valueToTest)) {
             $message = sprintf('%s should not be empty', $fieldName);

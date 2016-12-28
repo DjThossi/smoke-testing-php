@@ -10,6 +10,8 @@ class BasicAuth
     use EnsureIsStringTrait;
     use EnsureIsNotEmptyTrait;
 
+    const USERNAME_IS_EMPTY = 2;
+
     /**
      * @var string
      */
@@ -57,7 +59,7 @@ class BasicAuth
     private function ensureUsername($username)
     {
         $this->ensureIsString('Username', InvalidValueException::USERNAME_IS_NOT_A_STRING, $username);
-        $this->ensureIsNotEmpty('Username', InvalidValueException::USERNAME_IS_EMPTY, $username);
+        $this->ensureIsNotEmpty('Username', $username, self::USERNAME_IS_EMPTY);
     }
 
     /**

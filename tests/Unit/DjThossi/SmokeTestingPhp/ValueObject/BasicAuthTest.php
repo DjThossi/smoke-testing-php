@@ -52,7 +52,7 @@ class BasicAuthTest extends PHPUnit_Framework_TestCase
             'Username true' => [true, '', InvalidValueException::USERNAME_IS_NOT_A_STRING],
             'Username false' => [false, '', InvalidValueException::USERNAME_IS_NOT_A_STRING],
             'Username object' => [new stdClass(), '', InvalidValueException::USERNAME_IS_NOT_A_STRING],
-            'Username empty' => ['', '', InvalidValueException::USERNAME_IS_EMPTY],
+            'Username empty' => ['', '', BasicAuth::USERNAME_IS_EMPTY],
             'Password Integer' => ['username', 1337, InvalidValueException::PASSWORD_IS_NOT_A_STRING],
             'Password Float' => ['username', 1.337, InvalidValueException::PASSWORD_IS_NOT_A_STRING],
             'Password true' => ['username', true, InvalidValueException::PASSWORD_IS_NOT_A_STRING],
