@@ -5,12 +5,12 @@ trait EnsureIsBooleanTrait
 {
     /**
      * @param string $fieldName
-     * @param int $exceptionCode
      * @param mixed $valueToTest
+     * @param int $exceptionCode
      *
      * @throws InvalidValueException
      */
-    protected function ensureIsBoolean($fieldName, $exceptionCode, $valueToTest)
+    protected function ensureIsBoolean($fieldName, $valueToTest, $exceptionCode = 0)
     {
         if (!is_bool($valueToTest)) {
             $type = is_object($valueToTest) ? get_class($valueToTest) : gettype($valueToTest);

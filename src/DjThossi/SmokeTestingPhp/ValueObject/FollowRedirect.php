@@ -2,11 +2,12 @@
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
 use DjThossi\SmokeTestingPhp\Ensure\EnsureIsBooleanTrait;
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
 
 class FollowRedirect
 {
     use EnsureIsBooleanTrait;
+
+    const FOLLOW_IS_NOT_A_BOOLEAN = 1;
 
     /**
      * @var bool
@@ -36,6 +37,6 @@ class FollowRedirect
      */
     private function ensureFollow($follow)
     {
-        $this->ensureIsBoolean('Follow', InvalidValueException::FOLLOW_IS_NOT_A_BOOLEAN, $follow);
+        $this->ensureIsBoolean('Follow', $follow, self::FOLLOW_IS_NOT_A_BOOLEAN);
     }
 }

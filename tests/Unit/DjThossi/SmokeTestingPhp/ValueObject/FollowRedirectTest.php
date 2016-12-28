@@ -45,11 +45,11 @@ class FollowRedirectTest extends PHPUnit_Framework_TestCase
     public function failingValuesProvider()
     {
         return [
-            'Follow is String' => ['Hello World', InvalidValueException::FOLLOW_IS_NOT_A_BOOLEAN],
-            'Follow is Float' => [1.337, InvalidValueException::FOLLOW_IS_NOT_A_BOOLEAN],
-            'Follow is Integer' => [1337, InvalidValueException::FOLLOW_IS_NOT_A_BOOLEAN],
-            'Follow is object' => [new stdClass(), InvalidValueException::FOLLOW_IS_NOT_A_BOOLEAN],
-            'Follow is empty' => ['', InvalidValueException::FOLLOW_IS_NOT_A_BOOLEAN],
+            'Follow is String' => ['Hello World', FollowRedirect::FOLLOW_IS_NOT_A_BOOLEAN],
+            'Follow is Float' => [1.337, FollowRedirect::FOLLOW_IS_NOT_A_BOOLEAN],
+            'Follow is Integer' => [1337, FollowRedirect::FOLLOW_IS_NOT_A_BOOLEAN],
+            'Follow is object' => [new stdClass(), FollowRedirect::FOLLOW_IS_NOT_A_BOOLEAN],
+            'Follow is empty' => ['', FollowRedirect::FOLLOW_IS_NOT_A_BOOLEAN],
         ];
     }
 
