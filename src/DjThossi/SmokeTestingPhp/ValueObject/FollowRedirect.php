@@ -1,7 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsBooleanTrait;
+use DjThossi\Ensure\EnsureIsBooleanTrait;
 
 class FollowRedirect
 {

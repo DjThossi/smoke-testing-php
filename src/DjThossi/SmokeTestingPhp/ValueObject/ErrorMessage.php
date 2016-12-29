@@ -1,8 +1,8 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsNotEmptyTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait;
+use DjThossi\Ensure\EnsureIsNotEmptyTrait;
+use DjThossi\Ensure\EnsureIsStringTrait;
 
 class ErrorMessage
 {

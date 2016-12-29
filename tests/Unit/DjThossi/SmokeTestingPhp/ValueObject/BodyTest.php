@@ -1,14 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\Body
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait
  */
 class BodyTest extends PHPUnit_Framework_TestCase
 {

@@ -24,7 +24,8 @@
     "require": {
         "php": ">=5.4",
         "phpunit/phpunit": "~5.7",
-        "php-curl-class/php-curl-class": "7.1.0"
+        "php-curl-class/php-curl-class": "7.1.0",
+        "djthossi/ensure": "~1"
     },
     "require-dev": {
         "symfony/var-dumper": "^3.2",

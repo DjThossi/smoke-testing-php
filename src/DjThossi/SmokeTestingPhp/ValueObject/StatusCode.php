@@ -1,9 +1,9 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsLowerThanTrait;
+use DjThossi\Ensure\EnsureIsGreaterThanTrait;
+use DjThossi\Ensure\EnsureIsIntegerTrait;
+use DjThossi\Ensure\EnsureIsLowerThanTrait;
 
 class StatusCode
 {

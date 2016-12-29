@@ -1,15 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\BasicAuth
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsNotEmptyTrait
  */
 class BasicAuthTest extends PHPUnit_Framework_TestCase
 {

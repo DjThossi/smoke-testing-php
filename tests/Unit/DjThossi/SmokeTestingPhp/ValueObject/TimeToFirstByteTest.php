@@ -1,15 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait
  */
 class TimeToFirstByteTest extends PHPUnit_Framework_TestCase
 {

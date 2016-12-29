@@ -1,8 +1,8 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsUrlTrait;
+use DjThossi\Ensure\EnsureIsStringTrait;
+use DjThossi\Ensure\EnsureIsUrlTrait;
 
 class Url
 {

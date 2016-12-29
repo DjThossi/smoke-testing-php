@@ -84,7 +84,7 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
 
     public function testCanRunFailure()
     {
-        $url = new Url('http://foo.bar');
+        $url = new Url('http://localhost/foo.bar');
 
         $curlHttpRunner = new CurlHttpRunner(new Concurrency(1), new BodyLength(0));
         $curlHttpRunner->addRequest(

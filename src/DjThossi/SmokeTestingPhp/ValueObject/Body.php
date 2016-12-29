@@ -1,7 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait;
+use DjThossi\Ensure\EnsureIsStringTrait;
 
 class Body
 {

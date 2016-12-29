@@ -1,14 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsBooleanTrait
  */
 class FollowRedirectTest extends PHPUnit_Framework_TestCase
 {
