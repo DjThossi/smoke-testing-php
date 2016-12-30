@@ -1,8 +1,8 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait;
+use DjThossi\Ensure\EnsureIsGreaterThanTrait;
+use DjThossi\Ensure\EnsureIsIntegerTrait;
 
 class TimeToFirstByte
 {
@@ -40,7 +40,7 @@ class TimeToFirstByte
      */
     private function ensureInMilliseconds($inMilliseconds)
     {
-        $this->ensureIsInteger('InMilliseconds', self::IN_MILLISECONDS_IS_NOT_AN_INTEGER, $inMilliseconds);
-        $this->ensureIsGreaterThan('InMilliseconds', self::IN_MILLISECONDS_IS_TOO_SMALL, 0, $inMilliseconds);
+        $this->ensureIsInteger('InMilliseconds', $inMilliseconds, self::IN_MILLISECONDS_IS_NOT_AN_INTEGER);
+        $this->ensureIsGreaterThan('InMilliseconds', 0, $inMilliseconds, self::IN_MILLISECONDS_IS_TOO_SMALL);
     }
 }

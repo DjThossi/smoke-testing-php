@@ -1,15 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait
  */
 class RequestTimeoutTest extends PHPUnit_Framework_TestCase
 {
@@ -46,13 +44,13 @@ class RequestTimeoutTest extends PHPUnit_Framework_TestCase
     public function failingValuesProvider()
     {
         return [
-            'InSeconds is String' => ['Hello World', InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
-            'InSeconds is Float' => [1.337, InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
-            'InSeconds is true' => [true, InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
-            'InSeconds is false' => [false, InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
-            'InSeconds is object' => [new stdClass(), InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
-            'InSeconds is empty' => ['', InvalidValueException::IN_SECONDS_IS_NOT_AN_INTEGER],
-            'InSeconds is to small' => [-1, InvalidValueException::IN_SECONDS_IS_TOO_SMALL],
+            'InSeconds is String' => ['Hello World', RequestTimeout::IN_SECONDS_IS_NOT_AN_INTEGER],
+            'InSeconds is Float' => [1.337, RequestTimeout::IN_SECONDS_IS_NOT_AN_INTEGER],
+            'InSeconds is true' => [true, RequestTimeout::IN_SECONDS_IS_NOT_AN_INTEGER],
+            'InSeconds is false' => [false, RequestTimeout::IN_SECONDS_IS_NOT_AN_INTEGER],
+            'InSeconds is object' => [new stdClass(), RequestTimeout::IN_SECONDS_IS_NOT_AN_INTEGER],
+            'InSeconds is empty' => ['', RequestTimeout::IN_SECONDS_IS_NOT_AN_INTEGER],
+            'InSeconds is to small' => [-1, RequestTimeout::IN_SECONDS_IS_TOO_SMALL],
         ];
     }
 

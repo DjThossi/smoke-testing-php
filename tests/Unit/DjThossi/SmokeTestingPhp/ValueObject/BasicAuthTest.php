@@ -1,15 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\BasicAuth
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsNotEmptyTrait
  */
 class BasicAuthTest extends PHPUnit_Framework_TestCase
 {
@@ -47,17 +45,17 @@ class BasicAuthTest extends PHPUnit_Framework_TestCase
     public function failingValuesProvider()
     {
         return [
-            'Username Integer' => [1337, '', InvalidValueException::USERNAME_IS_NOT_A_STRING],
-            'Username Float' => [1.337, '', InvalidValueException::USERNAME_IS_NOT_A_STRING],
-            'Username true' => [true, '', InvalidValueException::USERNAME_IS_NOT_A_STRING],
-            'Username false' => [false, '', InvalidValueException::USERNAME_IS_NOT_A_STRING],
-            'Username object' => [new stdClass(), '', InvalidValueException::USERNAME_IS_NOT_A_STRING],
-            'Username empty' => ['', '', InvalidValueException::USERNAME_IS_EMPTY],
-            'Password Integer' => ['username', 1337, InvalidValueException::PASSWORD_IS_NOT_A_STRING],
-            'Password Float' => ['username', 1.337, InvalidValueException::PASSWORD_IS_NOT_A_STRING],
-            'Password true' => ['username', true, InvalidValueException::PASSWORD_IS_NOT_A_STRING],
-            'Password false' => ['username', false, InvalidValueException::PASSWORD_IS_NOT_A_STRING],
-            'Password object' => ['username', new stdClass(), InvalidValueException::PASSWORD_IS_NOT_A_STRING],
+            'Username Integer' => [1337, '', BasicAuth::USERNAME_IS_NOT_A_STRING],
+            'Username Float' => [1.337, '', BasicAuth::USERNAME_IS_NOT_A_STRING],
+            'Username true' => [true, '', BasicAuth::USERNAME_IS_NOT_A_STRING],
+            'Username false' => [false, '', BasicAuth::USERNAME_IS_NOT_A_STRING],
+            'Username object' => [new stdClass(), '', BasicAuth::USERNAME_IS_NOT_A_STRING],
+            'Username empty' => ['', '', BasicAuth::USERNAME_IS_EMPTY],
+            'Password Integer' => ['username', 1337, BasicAuth::PASSWORD_IS_NOT_A_STRING],
+            'Password Float' => ['username', 1.337, BasicAuth::PASSWORD_IS_NOT_A_STRING],
+            'Password true' => ['username', true, BasicAuth::PASSWORD_IS_NOT_A_STRING],
+            'Password false' => ['username', false, BasicAuth::PASSWORD_IS_NOT_A_STRING],
+            'Password object' => ['username', new stdClass(), BasicAuth::PASSWORD_IS_NOT_A_STRING],
         ];
     }
 

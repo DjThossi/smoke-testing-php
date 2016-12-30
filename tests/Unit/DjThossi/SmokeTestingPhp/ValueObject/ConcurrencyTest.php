@@ -1,15 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\Concurrency
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait
  */
 class ConcurrencyTest extends PHPUnit_Framework_TestCase
 {
@@ -40,13 +38,13 @@ class ConcurrencyTest extends PHPUnit_Framework_TestCase
     public function failingValuesProvider()
     {
         return [
-            'Concurrency is String' => ['Hello World', InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is Float' => [1.337, InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is true' => [true, InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is false' => [false, InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is object' => [new stdClass(), InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is empty' => ['', InvalidValueException::CONCURRENCY_IS_NOT_AN_INTEGER],
-            'Concurrency is to small' => [0, InvalidValueException::CONCURRENCY_IS_TOO_SMALL],
+            'Concurrency is String' => ['Hello World', Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is Float' => [1.337, Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is true' => [true, Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is false' => [false, Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is object' => [new stdClass(), Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is empty' => ['', Concurrency::CONCURRENCY_IS_NOT_AN_INTEGER],
+            'Concurrency is to small' => [0, Concurrency::CONCURRENCY_IS_TOO_SMALL],
         ];
     }
 

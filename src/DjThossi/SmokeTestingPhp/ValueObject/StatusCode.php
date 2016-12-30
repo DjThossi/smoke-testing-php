@@ -1,9 +1,9 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsLowerThanTrait;
+use DjThossi\Ensure\EnsureIsGreaterThanTrait;
+use DjThossi\Ensure\EnsureIsIntegerTrait;
+use DjThossi\Ensure\EnsureIsLowerThanTrait;
 
 class StatusCode
 {
@@ -43,8 +43,8 @@ class StatusCode
      */
     private function ensureStatusCode($statusCode)
     {
-        $this->ensureIsInteger('StatusCode', self::STATUS_CODE_IS_NOT_AN_INTEGER, $statusCode);
-        $this->ensureIsLowerThan('StatusCode', self::STATUS_CODE_IS_TOO_BIG, 512, $statusCode);
-        $this->ensureIsGreaterThan('StatusCode', self::STATUS_CODE_IS_TOO_SMALL, 99, $statusCode);
+        $this->ensureIsInteger('StatusCode', $statusCode, self::STATUS_CODE_IS_NOT_AN_INTEGER);
+        $this->ensureIsLowerThan('StatusCode', 512, $statusCode, self::STATUS_CODE_IS_TOO_BIG);
+        $this->ensureIsGreaterThan('StatusCode', 99, $statusCode, self::STATUS_CODE_IS_TOO_SMALL);
     }
 }

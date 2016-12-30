@@ -1,14 +1,16 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsUrlTrait;
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\EnsureIsStringTrait;
+use DjThossi\Ensure\EnsureIsUrlTrait;
 
 class Url
 {
     use EnsureIsStringTrait;
     use EnsureIsUrlTrait;
+
+    const URL_IS_NOT_A_STRING = 1;
+    const URL_IS_NOT_A_URL = 2;
     /**
      * @var string
      */
@@ -37,7 +39,7 @@ class Url
      */
     private function ensureUrl($url)
     {
-        $this->ensureIsString('Url', InvalidValueException::URL_IS_NOT_A_STRING, $url);
-        $this->ensureIsUrl('Url', InvalidValueException::URL_IS_NOT_A_URL, $url);
+        $this->ensureIsString('Url', $url, self::URL_IS_NOT_A_STRING);
+        $this->ensureIsUrl('Url', $url, self::URL_IS_NOT_A_URL);
     }
 }

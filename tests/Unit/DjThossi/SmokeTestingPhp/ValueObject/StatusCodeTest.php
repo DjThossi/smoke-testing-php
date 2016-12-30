@@ -1,16 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\StatusCode
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsLowerThanTrait
  */
 class StatusCodeTest extends PHPUnit_Framework_TestCase
 {

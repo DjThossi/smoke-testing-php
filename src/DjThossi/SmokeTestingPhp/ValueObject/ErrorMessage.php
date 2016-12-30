@@ -1,8 +1,8 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsNotEmptyTrait;
-use DjThossi\SmokeTestingPhp\Ensure\EnsureIsStringTrait;
+use DjThossi\Ensure\EnsureIsNotEmptyTrait;
+use DjThossi\Ensure\EnsureIsStringTrait;
 
 class ErrorMessage
 {
@@ -40,7 +40,7 @@ class ErrorMessage
      */
     private function ensureMessage($message)
     {
-        $this->ensureIsString('Message', self::MESSAGE_IS_NOT_A_STRING, $message);
-        $this->ensureIsNotEmpty('Message', self::MESSAGE_IS_EMPTY, $message);
+        $this->ensureIsString('Message', $message, self::MESSAGE_IS_NOT_A_STRING);
+        $this->ensureIsNotEmpty('Message', $message, self::MESSAGE_IS_EMPTY);
     }
 }

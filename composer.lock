@@ -4,9 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9b31c598cc922c59fc3b05165f8f5992",
-    "content-hash": "e80a9100e343320c3e9fdfa58177b9fb",
+    "hash": "ca546a90b2b62e027065d85a8f13c192",
+    "content-hash": "90c12222021cbed5289cfa513cc43275",
     "packages": [
+        {
+            "name": "djthossi/ensure",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DjThossi/Ensure.git",
+                "reference": "62155cf311395a4bd3ba55e460483859c433f511"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DjThossi/Ensure/zipball/62155cf311395a4bd3ba55e460483859c433f511",
+                "reference": "62155cf311395a4bd3ba55e460483859c433f511",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DjThossi\\": "src/DjThossi",
+                    "Unit\\": "tests/Unit"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Thoss",
+                    "email": "dj_thossi@web.de",
+                    "homepage": "http://www.sebastianthoss.de"
+                }
+            ],
+            "description": "Some PHP Traits for ensuring values",
+            "time": "2016-12-29 08:02:39"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
@@ -615,16 +656,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.4",
+            "version": "5.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "af91da3f2671006ff5d0628023de3b7ac4d1ef09"
+                "reference": "50fd2be8f3e23e91da825f36f08e5f9633076ffe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/af91da3f2671006ff5d0628023de3b7ac4d1ef09",
-                "reference": "af91da3f2671006ff5d0628023de3b7ac4d1ef09",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/50fd2be8f3e23e91da825f36f08e5f9633076ffe",
+                "reference": "50fd2be8f3e23e91da825f36f08e5f9633076ffe",
                 "shasum": ""
             },
             "require": {
@@ -693,7 +734,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-13 16:19:44"
+            "time": "2016-12-28 07:18:51"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

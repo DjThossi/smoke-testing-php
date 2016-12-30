@@ -1,15 +1,13 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\ValueObject;
 
-use DjThossi\SmokeTestingPhp\Ensure\InvalidValueException;
+use DjThossi\Ensure\InvalidValueException;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @covers \DjThossi\SmokeTestingPhp\ValueObject\BodyLength
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsIntegerTrait
- * @covers \DjThossi\SmokeTestingPhp\Ensure\EnsureIsGreaterThanTrait
  */
 class BodyLengthTest extends PHPUnit_Framework_TestCase
 {
@@ -46,13 +44,13 @@ class BodyLengthTest extends PHPUnit_Framework_TestCase
     public function failingValuesProvider()
     {
         return [
-            'CharsToPreserve is String' => ['Hello World', InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is Float' => [1.337, InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is true' => [true, InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is false' => [false, InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is object' => [new stdClass(), InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is empty' => ['', InvalidValueException::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
-            'CharsToPreserve is to small' => [-1, InvalidValueException::CHARS_TO_PRESERVE_IS_TOO_SMALL],
+            'CharsToPreserve is String' => ['Hello World', BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is Float' => [1.337, BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is true' => [true, BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is false' => [false, BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is object' => [new stdClass(), BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is empty' => ['', BodyLength::CHARS_TO_PRESERVE_IS_NOT_AN_INTEGER],
+            'CharsToPreserve is to small' => [-1, BodyLength::CHARS_TO_PRESERVE_IS_TOO_SMALL],
         ];
     }
 

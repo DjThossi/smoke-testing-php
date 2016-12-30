@@ -18,18 +18,42 @@ use PHPUnit_Framework_TestCase;
  */
 class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @param Result $result
+     */
+    public function successOutput(Result $result)
+    {
+    }
+
+    /**
+     * @param Result $result
+     */
+    public function errorOutput(Result $result)
+    {
+    }
+
     public function testCanCreateInstance()
     {
         $concurrencyMock = $this->getConcurrencyMock();
         $bodyLengthMock = $this->getBodyLengthMock();
 
-        $curlHttpRunner = new CurlHttpRunner($concurrencyMock, $bodyLengthMock);
+        $curlHttpRunner = new CurlHttpRunner(
+            $concurrencyMock,
+            $bodyLengthMock,
+            [$this, 'successOutput'],
+            [$this, 'errorOutput']
+        );
         $this->assertInstanceOf(CurlHttpRunner::class, $curlHttpRunner);
     }
 
     public function testCanRunWithoutRequestAdded()
     {
-        $curlHttpRunner = new CurlHttpRunner(new Concurrency(1), new BodyLength(0));
+        $curlHttpRunner = new CurlHttpRunner(
+            new Concurrency(1),
+            new BodyLength(0),
+            [$this, 'successOutput'],
+            [$this, 'errorOutput']
+        );
 
         $results = $curlHttpRunner->run();
         $this->assertCount(0, $results);
@@ -39,11 +63,16 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
     {
         $url = new Url('http://www.example.com');
 
-        $curlHttpRunner = new CurlHttpRunner(new Concurrency(1), new BodyLength(0));
+        $curlHttpRunner = new CurlHttpRunner(
+            new Concurrency(1),
+            new BodyLength(0),
+            [$this, 'successOutput'],
+            [$this, 'errorOutput']
+        );
         $curlHttpRunner->addRequest(
             new RequestOptions(
                 $url,
-                new RequestTimeout(2),
+                new RequestTimeout(1),
                 new FollowRedirect(true)
             )
         );
@@ -62,7 +91,12 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
     {
         $url = new Url('http://www.example.com');
 
-        $curlHttpRunner = new CurlHttpRunner(new Concurrency(1), new BodyLength(0));
+        $curlHttpRunner = new CurlHttpRunner(
+            new Concurrency(1),
+            new BodyLength(0),
+            [$this, 'successOutput'],
+            [$this, 'errorOutput']
+        );
         $curlHttpRunner->addRequest(
             new RequestOptions(
                 $url,
@@ -84,13 +118,18 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
 
     public function testCanRunFailure()
     {
-        $url = new Url('http://foo.bar');
+        $url = new Url('http://localhost/foo.bar');
 
-        $curlHttpRunner = new CurlHttpRunner(new Concurrency(1), new BodyLength(0));
+        $curlHttpRunner = new CurlHttpRunner(
+            new Concurrency(1),
+            new BodyLength(0),
+            [$this, 'successOutput'],
+            [$this, 'errorOutput']
+        );
         $curlHttpRunner->addRequest(
             new RequestOptions(
                 $url,
-                new RequestTimeout(2),
+                new RequestTimeout(1),
                 new FollowRedirect(true)
             )
         );
