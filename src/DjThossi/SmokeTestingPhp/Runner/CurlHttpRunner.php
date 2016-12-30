@@ -33,16 +33,34 @@ class CurlHttpRunner implements HttpRunner
     private $results;
 
     /**
+     * @var callable
+     */
+    private $successCallback;
+
+    /**
+     * @var callable
+     */
+    private $errorCallback;
+
+    /**
      * @param Concurrency $concurrency
      * @param BodyLength $bodyLength
+     * @param callable $successCallback
+     * @param callable $errorCallback
      */
-    public function __construct(Concurrency $concurrency, BodyLength $bodyLength)
-    {
+    public function __construct(
+        Concurrency $concurrency,
+        BodyLength $bodyLength,
+        callable $successCallback,
+        callable $errorCallback
+    ) {
         $this->multiCurl = new MultiCurl();
         $this->multiCurl->setConcurrency($concurrency->asInteger());
         $this->multiCurl->success([$this, 'onSuccess']);
         $this->multiCurl->error([$this, 'onError']);
         $this->bodyLength = $bodyLength;
+        $this->successCallback = $successCallback;
+        $this->errorCallback = $errorCallback;
     }
 
     /**
@@ -87,14 +105,16 @@ class CurlHttpRunner implements HttpRunner
 
         $body = substr($curl->response, 0, $this->bodyLength->asInteger());
 
-        $this->results->addResult(
-            new ValidResult(
-                new Url($curl->url),
-                new Body($body),
-                new TimeToFirstByte($timeToFirstByteInMilliseconds),
-                new StatusCode($curl->httpStatusCode)
-            )
+        $validResult = new ValidResult(
+            new Url($curl->url),
+            new Body($body),
+            new TimeToFirstByte($timeToFirstByteInMilliseconds),
+            new StatusCode($curl->httpStatusCode)
         );
+
+        call_user_func($this->successCallback, $validResult);
+
+        $this->results->addResult($validResult);
     }
 
     /**
@@ -113,6 +133,8 @@ class CurlHttpRunner implements HttpRunner
         );
 
         $errorResult = new ErrorResult($url, $errorMessage);
+
+        call_user_func($this->errorCallback, $errorResult);
 
         $this->results->addResult($errorResult);
     }

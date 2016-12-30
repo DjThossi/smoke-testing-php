@@ -11,6 +11,22 @@ use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 trait SmokeTestTrait
 {
     /**
+     * @param Result $result
+     */
+    public function successOutput(Result $result)
+    {
+        //Please override this method in you test class if you would like to do an output
+    }
+
+    /**
+     * @param Result $result
+     */
+    public function errorOutput(Result $result)
+    {
+        //Please override this method in you test class if you would like to do an output
+    }
+
+    /**
      * @param SmokeTestOptions $smokeTestOptions
      *
      * @return array
@@ -19,7 +35,9 @@ trait SmokeTestTrait
     {
         $httpRunner = new CurlHttpRunner(
             $smokeTestOptions->getConcurrency(),
-            $smokeTestOptions->getBodyLength()
+            $smokeTestOptions->getBodyLength(),
+            [$this, 'successOutput'],
+            [$this, 'errorOutput']
         );
 
         $runner = new SmokeTest($httpRunner);
