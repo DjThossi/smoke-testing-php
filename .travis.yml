@@ -15,7 +15,7 @@ cache:
 before_script: composer install --no-dev
 
 after_success:
-  - composer install codeclimate/php-test-reporter dev-master
+  - composer require codeclimate/php-test-reporter dev-master
   - bin/test-reporter
 
 notifications:
