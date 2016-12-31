@@ -1,5 +1,5 @@
 /bin/
 /vendor/
 composer.phar
-/coverage/
+/build/
 /.php_cs.cache
