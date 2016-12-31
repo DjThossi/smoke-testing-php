@@ -13,14 +13,14 @@ class BodyLengthTest extends PHPUnit_Framework_TestCase
 {
     public function testCanCreateInstance()
     {
-        $BodyLength = new BodyLength(1337);
-        $this->assertInstanceOf(BodyLength::class, $BodyLength);
+        $bodyLength = new BodyLength(1337);
+        $this->assertInstanceOf(BodyLength::class, $bodyLength);
     }
 
     public function testCanCreateInstanceWithLengthZero()
     {
-        $BodyLength = new BodyLength(0);
-        $this->assertInstanceOf(BodyLength::class, $BodyLength);
+        $bodyLength = new BodyLength(0);
+        $this->assertInstanceOf(BodyLength::class, $bodyLength);
     }
 
     /**
@@ -34,8 +34,8 @@ class BodyLengthTest extends PHPUnit_Framework_TestCase
         $this->expectException(InvalidValueException::class);
         $this->expectExceptionCode($exceptionCode);
 
-        $BodyLength = new BodyLength($charsToPreserve);
-        $this->assertInstanceOf(BodyLength::class, $BodyLength);
+        $bodyLength = new BodyLength($charsToPreserve);
+        $this->assertInstanceOf(BodyLength::class, $bodyLength);
     }
 
     /**
@@ -57,7 +57,7 @@ class BodyLengthTest extends PHPUnit_Framework_TestCase
     public function testCanAsInteger()
     {
         $charsToPreserve = 1337;
-        $BodyLength = new BodyLength($charsToPreserve);
-        $this->assertSame($charsToPreserve, $BodyLength->asInteger());
+        $bodyLength = new BodyLength($charsToPreserve);
+        $this->assertSame($charsToPreserve, $bodyLength->asInteger());
     }
 }

@@ -13,14 +13,14 @@ class RequestTimeoutTest extends PHPUnit_Framework_TestCase
 {
     public function testCanCreateInstance()
     {
-        $RequestTimeout = new RequestTimeout(1337);
-        $this->assertInstanceOf(RequestTimeout::class, $RequestTimeout);
+        $requestTimeout = new RequestTimeout(1337);
+        $this->assertInstanceOf(RequestTimeout::class, $requestTimeout);
     }
 
     public function testCanCreateInstanceWithLengthZero()
     {
-        $RequestTimeout = new RequestTimeout(0);
-        $this->assertInstanceOf(RequestTimeout::class, $RequestTimeout);
+        $requestTimeout = new RequestTimeout(0);
+        $this->assertInstanceOf(RequestTimeout::class, $requestTimeout);
     }
 
     /**
@@ -34,8 +34,8 @@ class RequestTimeoutTest extends PHPUnit_Framework_TestCase
         $this->expectException(InvalidValueException::class);
         $this->expectExceptionCode($exceptionCode);
 
-        $RequestTimeout = new RequestTimeout($inSeconds);
-        $this->assertInstanceOf(RequestTimeout::class, $RequestTimeout);
+        $requestTimeout = new RequestTimeout($inSeconds);
+        $this->assertInstanceOf(RequestTimeout::class, $requestTimeout);
     }
 
     /**
@@ -57,7 +57,7 @@ class RequestTimeoutTest extends PHPUnit_Framework_TestCase
     public function testCanGetInSeconds()
     {
         $inSeconds = 1337;
-        $RequestTimeout = new RequestTimeout($inSeconds);
-        $this->assertSame($inSeconds, $RequestTimeout->inSeconds());
+        $requestTimeout = new RequestTimeout($inSeconds);
+        $this->assertSame($inSeconds, $requestTimeout->inSeconds());
     }
 }

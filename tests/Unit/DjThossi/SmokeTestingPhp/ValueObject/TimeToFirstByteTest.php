@@ -13,8 +13,8 @@ class TimeToFirstByteTest extends PHPUnit_Framework_TestCase
 {
     public function testCanCreateInstance()
     {
-        $TimeToFirstByte = new TimeToFirstByte(1337);
-        $this->assertInstanceOf(TimeToFirstByte::class, $TimeToFirstByte);
+        $timeToFirstByte = new TimeToFirstByte(1337);
+        $this->assertInstanceOf(TimeToFirstByte::class, $timeToFirstByte);
     }
 
     /**
@@ -28,8 +28,8 @@ class TimeToFirstByteTest extends PHPUnit_Framework_TestCase
         $this->expectException(InvalidValueException::class);
         $this->expectExceptionCode($exceptionCode);
 
-        $TimeToFirstByte = new TimeToFirstByte($inMilliseconds);
-        $this->assertInstanceOf(TimeToFirstByte::class, $TimeToFirstByte);
+        $timeToFirstByte = new TimeToFirstByte($inMilliseconds);
+        $this->assertInstanceOf(TimeToFirstByte::class, $timeToFirstByte);
     }
 
     /**
@@ -51,7 +51,7 @@ class TimeToFirstByteTest extends PHPUnit_Framework_TestCase
     public function testCanGetInMilliseconds()
     {
         $inMilliseconds = 1337;
-        $TimeToFirstByte = new TimeToFirstByte($inMilliseconds);
-        $this->assertSame($inMilliseconds, $TimeToFirstByte->inMilliSeconds());
+        $timeToFirstByte = new TimeToFirstByte($inMilliseconds);
+        $this->assertSame($inMilliseconds, $timeToFirstByte->inMilliSeconds());
     }
 }

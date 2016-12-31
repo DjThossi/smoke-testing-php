@@ -13,14 +13,14 @@ class FollowRedirectTest extends PHPUnit_Framework_TestCase
 {
     public function testCanCreateInstanceTrue()
     {
-        $FollowRedirect = new FollowRedirect(true);
-        $this->assertInstanceOf(FollowRedirect::class, $FollowRedirect);
+        $followRedirect = new FollowRedirect(true);
+        $this->assertInstanceOf(FollowRedirect::class, $followRedirect);
     }
 
     public function testCanCreateInstanceFalse()
     {
-        $FollowRedirect = new FollowRedirect(false);
-        $this->assertInstanceOf(FollowRedirect::class, $FollowRedirect);
+        $followRedirect = new FollowRedirect(false);
+        $this->assertInstanceOf(FollowRedirect::class, $followRedirect);
     }
 
     /**
@@ -34,8 +34,8 @@ class FollowRedirectTest extends PHPUnit_Framework_TestCase
         $this->expectException(InvalidValueException::class);
         $this->expectExceptionCode($exceptionCode);
 
-        $FollowRedirect = new FollowRedirect($follow);
-        $this->assertInstanceOf(FollowRedirect::class, $FollowRedirect);
+        $followRedirect = new FollowRedirect($follow);
+        $this->assertInstanceOf(FollowRedirect::class, $followRedirect);
     }
 
     /**
@@ -55,7 +55,7 @@ class FollowRedirectTest extends PHPUnit_Framework_TestCase
     public function testCanGetAsBoolean()
     {
         $follow = true;
-        $FollowRedirect = new FollowRedirect($follow);
-        $this->assertSame($follow, $FollowRedirect->asBoolean());
+        $followRedirect = new FollowRedirect($follow);
+        $this->assertSame($follow, $followRedirect->asBoolean());
     }
 }
