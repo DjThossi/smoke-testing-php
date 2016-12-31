@@ -1,11 +1,18 @@
 language: php
-before_script: composer install --no-dev
+
 php:
   - '5.6'
   - '7.0'
   - '7.1'
   - hhvm
   - nightly
+
+cache:
+  directories:
+    - vendor
+    - bin
+
+before_script: composer install --no-dev
 
 notifications:
   email:
