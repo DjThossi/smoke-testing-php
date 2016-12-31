@@ -101,14 +101,14 @@ class CurlHttpRunner implements HttpRunner
     {
         $curlInfo = $curl->getInfo();
         $timeToFirstByte = $curlInfo['starttransfer_time'] - $curlInfo['pretransfer_time'];
-        $timeToFirstByteInMilliseconds = (int) round($timeToFirstByte * 1000);
+        $inMilliseconds = (int) round($timeToFirstByte * 1000);
 
         $body = substr($curl->response, 0, $this->bodyLength->asInteger());
 
         $validResult = new ValidResult(
             new Url($curl->url),
             new Body($body),
-            new TimeToFirstByte($timeToFirstByteInMilliseconds),
+            new TimeToFirstByte($inMilliseconds),
             new StatusCode($curl->httpStatusCode)
         );
 
