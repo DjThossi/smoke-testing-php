@@ -1,5 +1,5 @@
 language: php
-before_script: composer install --no-dev
+
 php:
   - '5.6'
   - '7.0'
@@ -7,7 +7,22 @@ php:
   - hhvm
   - nightly
 
+cache:
+  directories:
+    - vendor
+    - bin
+
+before_script: composer install --no-dev
+
+after_success:
+  - composer require codeclimate/php-test-reporter dev-master
+  - bin/test-reporter
+
 notifications:
   email:
     on_success: change
     on_failure: change
+
+addons:
+  code_climate:
+    repo_token: 5b8d35683519492fa56ed775ae82e48a6f59e44ab64aaf2e5d254b23fbb842ca
