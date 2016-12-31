@@ -7,6 +7,10 @@ engines:
         php:
           mass_threshold: 40
     exclude_fingerprints:
+      - ca748db3788db662b83758c5441911e2
+      - dde540d81901b79bdf71a96de2e0a435
+      - d149bd10d4c8a0cc5f844479901e9ecb
+      - 049bf3636cacd7560c6dea70a55163f3
 
   fixme:
     enabled: true
