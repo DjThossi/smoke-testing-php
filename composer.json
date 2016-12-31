@@ -28,7 +28,6 @@
         "djthossi/ensure": "~1"
     },
     "require-dev": {
-        "symfony/var-dumper": "^3.2",
-        "friendsofphp/php-cs-fixer": "~2"
+        "symfony/var-dumper": "^3.2"
     }
 }
