@@ -2,7 +2,9 @@
 namespace Integration\DjThossi\SmokeTestingPhp\Runner;
 
 use DjThossi\SmokeTestingPhp\Options\RequestOptions;
+use DjThossi\SmokeTestingPhp\Result\ErrorResult;
 use DjThossi\SmokeTestingPhp\Result\Result;
+use DjThossi\SmokeTestingPhp\Result\ValidResult;
 use DjThossi\SmokeTestingPhp\Runner\CurlHttpRunner;
 use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
@@ -23,6 +25,7 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
      */
     public function successOutput(Result $result)
     {
+        $this->assertInstanceOf(ValidResult::class, $result);
     }
 
     /**
@@ -30,6 +33,7 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
      */
     public function errorOutput(Result $result)
     {
+        $this->assertInstanceOf(ErrorResult::class, $result);
     }
 
     public function testCanCreateInstance()
