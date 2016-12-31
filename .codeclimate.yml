@@ -14,6 +14,9 @@ engines:
       - e1acd22afecc2cecd6173b17a70d7e03
       - 54c332611d3a04d6311a1dae4a788a22
       - f137dc1acdf76375842bfb2b6b8ab8ed
+      - d5f745337ab6565954d7a347537ab1c6
+      - b5dad259511eccb2f737554f6506a5ee
+      - 51fb6572c6def6e7ac49039800a826b6
 
   fixme:
     enabled: true
