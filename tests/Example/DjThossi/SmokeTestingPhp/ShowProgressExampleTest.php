@@ -25,7 +25,7 @@ class ShowProgressExampleTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function ErrorOutput(Result $result)
+    public function errorOutput(Result $result)
     {
         echo sprintf(
             "FAILED => %s \n",
