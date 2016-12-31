@@ -29,14 +29,7 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
     {
         $urls = [];
 
-        $options = new SmokeTestOptions(
-            UrlCollection::fromStrings($urls),
-            new RequestTimeout(2),
-            new FollowRedirect(true),
-            new Concurrency(10),
-            new BodyLength(500),
-            new BasicAuth('username', 'password')
-        );
+        $options = $this->createSmokeTestOptions($urls);
 
         $dataProviderResults = $this->runSmokeTests($options);
         $this->assertInternalType('array', $dataProviderResults);
@@ -47,14 +40,7 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
     {
         $url = 'http://www.example.com';
 
-        $options = new SmokeTestOptions(
-            UrlCollection::fromStrings([$url]),
-            new RequestTimeout(2),
-            new FollowRedirect(true),
-            new Concurrency(10),
-            new BodyLength(500),
-            new BasicAuth('username', 'password')
-        );
+        $options = $this->createSmokeTestOptions([$url]);
 
         $dataProviderResults = $this->runSmokeTests($options);
         $this->assertInternalType('array', $dataProviderResults);
@@ -69,14 +55,7 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
     {
         $url = 'http://localhost/not-working.html';
 
-        $options = new SmokeTestOptions(
-            UrlCollection::fromStrings([$url]),
-            new RequestTimeout(2),
-            new FollowRedirect(true),
-            new Concurrency(10),
-            new BodyLength(500),
-            new BasicAuth('username', 'password')
-        );
+        $options = $this->createSmokeTestOptions([$url]);
 
         $dataProviderResults = $this->runSmokeTests($options);
         $this->assertInternalType('array', $dataProviderResults);
@@ -89,34 +68,56 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
 
     public function testAssertSuccess()
     {
-        $result = new ValidResult(
-            new Url('http://www.example.com'),
-            new Body(''),
-            new TimeToFirstByte(100),
-            new StatusCode(200)
-        );
+        $result = $this->createValidResult();
         $this->assertSuccess($result);
     }
 
     public function testAssertTimeToFirstByteBelow()
     {
-        $result = new ValidResult(
-            new Url('http://www.example.com'),
-            new Body(''),
-            new TimeToFirstByte(100),
-            new StatusCode(200)
-        );
+        $result = $this->createValidResult();
         $this->assertTimeToFirstByteBelow(new TimeToFirstByte(2000), $result);
     }
 
     public function testAssertBodyNotEmpty()
     {
+        $result = $this->createValidResult('HelloWorld');
+
+        $this->assertBodyNotEmpty($result);
+    }
+
+    /**
+     * @param array $urls
+     *
+     * @return SmokeTestOptions
+     */
+    private function createSmokeTestOptions(array $urls)
+    {
+        $options = new SmokeTestOptions(
+            UrlCollection::fromStrings($urls),
+            new RequestTimeout(2),
+            new FollowRedirect(true),
+            new Concurrency(10),
+            new BodyLength(500),
+            new BasicAuth('username', 'password')
+        );
+
+        return $options;
+    }
+
+    /**
+     * @param string $body
+     *
+     * @return ValidResult
+     */
+    private function createValidResult($body = '')
+    {
         $result = new ValidResult(
             new Url('http://www.example.com'),
-            new Body('HelloWorld'),
+            new Body($body),
             new TimeToFirstByte(100),
             new StatusCode(200)
         );
-        $this->assertBodyNotEmpty($result);
+
+        return $result;
     }
 }
