@@ -22,7 +22,7 @@
         "bin-dir": "bin"
     },
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.6",
         "phpunit/phpunit": "~5.7",
         "php-curl-class/php-curl-class": "7.1.0",
         "djthossi/ensure": "~1"

@@ -4,28 +4,29 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ca546a90b2b62e027065d85a8f13c192",
-    "content-hash": "90c12222021cbed5289cfa513cc43275",
+    "hash": "6333979d34f7a511066dee1877bf0f12",
+    "content-hash": "4a2e5a88c57aadf61bb0a24e1bd68b25",
     "packages": [
         {
             "name": "djthossi/ensure",
-            "version": "1.0.1",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DjThossi/Ensure.git",
-                "reference": "62155cf311395a4bd3ba55e460483859c433f511"
+                "reference": "0f4b734bae92e2479827a249f17214ed0cd83a08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DjThossi/Ensure/zipball/62155cf311395a4bd3ba55e460483859c433f511",
-                "reference": "62155cf311395a4bd3ba55e460483859c433f511",
+                "url": "https://api.github.com/repos/DjThossi/Ensure/zipball/0f4b734bae92e2479827a249f17214ed0cd83a08",
+                "reference": "0f4b734bae92e2479827a249f17214ed0cd83a08",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.7"
+                "phpunit/phpunit": "~5.7",
+                "satooshi/php-coveralls": "~1.0"
             },
             "type": "library",
             "autoload": {
@@ -46,7 +47,7 @@
                 }
             ],
             "description": "Some PHP Traits for ensuring values",
-            "time": "2016-12-29 08:02:39"
+            "time": "2016-12-31 11:17:50"
         },
         {
             "name": "doctrine/instantiator",
@@ -2090,7 +2091,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4"
+        "php": ">=5.6"
     },
     "platform-dev": []
 }
