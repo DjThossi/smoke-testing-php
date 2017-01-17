@@ -8,6 +8,18 @@
 This repository is maintained by [Sebastian Thoss](http://www.sebastianthoss.de).
 The Smoke Testing PHP library is supposed to help you doing proper SmokeTests.
 
+## How to install
+You have several options to install this package
+
+### Composer
+`composer require djthossi/smoke-testing-php`
+
+### Git
+`git clone https://github.com/DjThossi/Smoke-Testing-PHP.git`
+
+### Download
+`https://github.com/DjThossi/Smoke-Testing-PHP/archive/master.zip`
+
 ## Example Code
 In following directory you'll find example code how to use this tool.
 [/tests/Example/DjThossi/SmokeTestingPhp](https://github.com/DjThossi/smoke-testing-php/tree/master/tests/Example/DjThossi/SmokeTestingPhp)
