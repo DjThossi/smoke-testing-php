@@ -6,7 +6,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DjThossi/smoke-testing-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DjThossi/smoke-testing-php/?branch=master)
 
 This repository is maintained by [Sebastian Thoss](http://www.sebastianthoss.de).
-The Smoke Testing PHP library is supposed to help you doing proper SmokeTests.
+The Smoke Testing PHP library is supposed to help you doing proper SmokeTests
 
 ## How to install
 You have several options to install this package
