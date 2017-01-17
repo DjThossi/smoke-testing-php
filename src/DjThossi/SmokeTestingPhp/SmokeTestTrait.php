@@ -1,7 +1,6 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
-use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RunnerOptions;
 use DjThossi\SmokeTestingPhp\Options\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\Result\Result;
@@ -51,24 +50,7 @@ trait SmokeTestTrait
 
         $resultCollection = $runner->run($runnerOptions);
 
-        return $this->convertResultCollectionToDataProviderArray($resultCollection);
-    }
-
-    /**
-     * @param ResultCollection $resultCollection
-     *
-     * @return array
-     */
-    protected function convertResultCollectionToDataProviderArray(ResultCollection $resultCollection)
-    {
-        $retValue = [];
-        /** @var Result $result */
-        foreach ($resultCollection as $key => $result) {
-            $key = sprintf('#%d: %s', $key, $result->getUrl()->asString());
-            $retValue[$key] = [$result];
-        }
-
-        return $retValue;
+        return $resultCollection->asDataProviderArray();
     }
 
     /**
