@@ -19,7 +19,7 @@ class UrlCollection extends BaseCollection
     }
 
     /**
-     * @param array $urls
+     * @param Url[] $urls
      *
      * @return UrlCollection
      */
@@ -34,7 +34,7 @@ class UrlCollection extends BaseCollection
     }
 
     /**
-     * @param Url[] $urls
+     * @param string[] $urls
      *
      * @return UrlCollection
      */
