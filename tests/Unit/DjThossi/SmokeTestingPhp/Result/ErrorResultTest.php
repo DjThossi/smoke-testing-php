@@ -2,6 +2,7 @@
 namespace Unit\DjThossi\SmokeTestingPhp\Result;
 
 use DjThossi\SmokeTestingPhp\Result\ErrorResult;
+use DjThossi\SmokeTestingPhp\Result\NotImplementedException;
 use DjThossi\SmokeTestingPhp\ValueObject\ErrorMessage;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 use PHPUnit_Framework_MockObject_MockObject;
@@ -36,8 +37,11 @@ class ErrorResultTest extends PHPUnit_Framework_TestCase
         $urlMock = $this->getUrlMock();
         $errorMessageMock = $this->getErrorMessageMock();
 
+        $this->expectException(NotImplementedException::class);
+        $this->expectExceptionMessage('getBody is not implemented');
+
         $errorResult = new ErrorResult($urlMock, $errorMessageMock);
-        $this->assertNull($errorResult->getBody());
+        $errorResult->getBody();
     }
 
     public function testCanGetTimeToFirstByte()
@@ -45,8 +49,11 @@ class ErrorResultTest extends PHPUnit_Framework_TestCase
         $urlMock = $this->getUrlMock();
         $bodyMock = $this->getErrorMessageMock();
 
+        $this->expectException(NotImplementedException::class);
+        $this->expectExceptionMessage('getTimeToFirstByte is not implemented');
+
         $errorResult = new ErrorResult($urlMock, $bodyMock);
-        $this->assertNull($errorResult->getTimeToFirstByte());
+        $errorResult->getTimeToFirstByte();
     }
 
     public function testCanGetStatusCode()
@@ -54,8 +61,11 @@ class ErrorResultTest extends PHPUnit_Framework_TestCase
         $urlMock = $this->getUrlMock();
         $bodyMock = $this->getErrorMessageMock();
 
+        $this->expectException(NotImplementedException::class);
+        $this->expectExceptionMessage('getStatusCode is not implemented');
+
         $errorResult = new ErrorResult($urlMock, $bodyMock);
-        $this->assertNull($errorResult->getStatusCode());
+        $errorResult->getStatusCode();
     }
 
     public function testIsErrorResult()
