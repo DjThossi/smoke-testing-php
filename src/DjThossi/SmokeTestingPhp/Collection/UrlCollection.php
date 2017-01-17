@@ -52,6 +52,14 @@ class UrlCollection extends BaseCollection
      */
     public function addUrl(Url $url)
     {
-        $this->elements[] = $url;
+        $this->addUrl($url);
+    }
+
+    /**
+     * @return Url
+     */
+    public function current()
+    {
+        return current($this->getElements());
     }
 }

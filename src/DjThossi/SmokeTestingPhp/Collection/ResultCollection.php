@@ -10,6 +10,14 @@ class ResultCollection extends BaseCollection
      */
     public function addResult(Result $result)
     {
-        $this->elements[] = $result;
+        $this->addElement($result);
+    }
+
+    /**
+     * @return Result
+     */
+    public function current()
+    {
+        return current($this->getElements());
     }
 }

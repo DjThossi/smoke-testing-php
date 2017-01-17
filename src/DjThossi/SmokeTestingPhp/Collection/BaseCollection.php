@@ -9,7 +9,9 @@ abstract class BaseCollection implements Iterator, Countable
     /**
      * @var array
      */
-    protected $elements = [];
+    private $elements = [];
+
+    public abstract function current();
 
     /**
      * @return mixed
@@ -38,18 +40,26 @@ abstract class BaseCollection implements Iterator, Countable
     }
 
     /**
-     * @return mixed
-     */
-    public function current()
-    {
-        return current($this->elements);
-    }
-
-    /**
      * @return int
      */
     public function count()
     {
         return count($this->elements);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getElements()
+    {
+        return $this->elements;
+    }
+
+    /**
+     * @param mixed $element
+     */
+    protected function addElement($element)
+    {
+        $this->elements[] = $element;
     }
 }
