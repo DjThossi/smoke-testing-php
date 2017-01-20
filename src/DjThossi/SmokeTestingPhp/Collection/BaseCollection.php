@@ -11,7 +11,7 @@ abstract class BaseCollection implements Iterator, Countable
      */
     private $elements = [];
 
-    public abstract function current();
+    abstract public function current();
 
     /**
      * @return mixed
@@ -48,11 +48,11 @@ abstract class BaseCollection implements Iterator, Countable
     }
 
     /**
-     * @return array
+     * @return mixed
      */
-    protected function getElements()
+    protected function getCurrent()
     {
-        return $this->elements;
+        return current($this->elements);
     }
 
     /**

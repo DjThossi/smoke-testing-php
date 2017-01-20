@@ -53,7 +53,7 @@ class UrlCollection extends BaseCollection
      */
     public function addUrl(Url $url)
     {
-        $this->addUrl($url);
+        $this->addElement($url);
     }
 
     /**
@@ -61,6 +61,6 @@ class UrlCollection extends BaseCollection
      */
     public function current()
     {
-        return current($this->getElements());
+        return $this->getCurrent();
     }
 }

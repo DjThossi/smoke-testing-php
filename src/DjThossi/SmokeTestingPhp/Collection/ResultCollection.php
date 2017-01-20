@@ -18,7 +18,7 @@ class ResultCollection extends BaseCollection
      */
     public function current()
     {
-        return current($this->getElements());
+        return $this->getCurrent();
     }
 
     /**
