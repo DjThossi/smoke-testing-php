@@ -1,12 +1,12 @@
 <?php
 namespace DjThossi\SmokeTestingPhp;
 
-use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RunnerOptions;
 use DjThossi\SmokeTestingPhp\Options\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\Result\Result;
 use DjThossi\SmokeTestingPhp\Runner\CurlHttpRunner;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
+use PHPUnit\Framework\Assert;
 
 trait SmokeTestTrait
 {
@@ -51,24 +51,7 @@ trait SmokeTestTrait
 
         $resultCollection = $runner->run($runnerOptions);
 
-        return $this->convertResultCollectionToDataProviderArray($resultCollection);
-    }
-
-    /**
-     * @param ResultCollection $resultCollection
-     *
-     * @return array
-     */
-    protected function convertResultCollectionToDataProviderArray(ResultCollection $resultCollection)
-    {
-        $retValue = [];
-        /** @var Result $result */
-        foreach ($resultCollection as $key => $result) {
-            $key = sprintf('#%d: %s', $key, $result->getUrl()->asString());
-            $retValue[$key] = [$result];
-        }
-
-        return $retValue;
+        return $resultCollection->asDataProviderArray();
     }
 
     /**
@@ -76,9 +59,8 @@ trait SmokeTestTrait
      */
     protected function assertSuccess(Result $result)
     {
-        $this->assertTrue($result->isValidResult(), $result->asString());
-
-        $this->assertSame(200, $result->getStatusCode()->asInteger(), $result->asString());
+        Assert::assertTrue($result->isValidResult(), $result->asString());
+        Assert::assertSame(200, $result->getStatusCode()->asInteger(), $result->asString());
     }
 
     /**
@@ -87,7 +69,7 @@ trait SmokeTestTrait
      */
     protected function assertTimeToFirstByteBelow(TimeToFirstByte $maxTimeToFirstByte, Result $result)
     {
-        $this->assertLessThanOrEqual(
+        Assert::assertLessThanOrEqual(
             $maxTimeToFirstByte->inMilliSeconds(),
             $result->getTimeToFirstByte()->inMilliSeconds(),
             $result->asString()
@@ -99,7 +81,7 @@ trait SmokeTestTrait
      */
     protected function assertBodyNotEmpty(Result $result)
     {
-        $this->assertNotNull($result->getBody(), $result->asString());
-        $this->assertNotEmpty($result->getBody()->asString(), $result->asString());
+        Assert::assertNotNull($result->getBody(), $result->asString());
+        Assert::assertNotEmpty($result->getBody()->asString(), $result->asString());
     }
 }

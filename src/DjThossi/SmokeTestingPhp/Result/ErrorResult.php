@@ -52,16 +52,16 @@ class ErrorResult implements Result
 
     public function getTimeToFirstByte()
     {
-        return null;
+        throw new NotImplementedException('getTimeToFirstByte is not implemented');
     }
 
     public function getBody()
     {
-        return null;
+        throw new NotImplementedException('getBody is not implemented');
     }
 
     public function getStatusCode()
     {
-        return null;
+        throw new NotImplementedException('getStatusCode is not implemented');
     }
 }

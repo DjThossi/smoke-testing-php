@@ -27,7 +27,7 @@ class StatusCodeTest extends PHPUnit_Framework_TestCase
         return [
             '100' => [100],
             '200' => [200],
-            '599' => [511],
+            '511' => [511],
         ];
     }
 

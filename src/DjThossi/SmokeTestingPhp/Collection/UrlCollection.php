@@ -19,7 +19,7 @@ class UrlCollection extends BaseCollection
     }
 
     /**
-     * @param array $urls
+     * @param Url[] $urls
      *
      * @return UrlCollection
      */
@@ -34,17 +34,18 @@ class UrlCollection extends BaseCollection
     }
 
     /**
-     * @param Url[] $urls
+     * @param string[] $urls
      *
      * @return UrlCollection
      */
     public static function fromStrings(array $urls)
     {
-        foreach ($urls as &$url) {
-            $url = new Url($url);
+        $urlCollection = new self();
+        foreach ($urls as $url) {
+            $urlCollection->addUrl(new Url($url));
         }
 
-        return self::fromUrls($urls);
+        return $urlCollection;
     }
 
     /**

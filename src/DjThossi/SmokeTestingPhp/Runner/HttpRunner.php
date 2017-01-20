@@ -8,6 +8,8 @@ interface HttpRunner
 {
     /**
      * @param RequestOptions $requestOptions
+     *
+     * @return void
      */
     public function addRequest(RequestOptions $requestOptions);
 

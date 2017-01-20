@@ -23,6 +23,7 @@ return PhpCsFixer\Config::create()
         'pre_increment' => false,
         'phpdoc_order' => true,
         'concat_space' => ['spacing' => 'one'],
+        'phpdoc_no_empty_return' => false,
     ))
     ->setFinder(
         PhpCsFixer\Finder::create()

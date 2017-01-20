@@ -20,4 +20,19 @@ class ResultCollection extends BaseCollection
     {
         return current($this->getElements());
     }
+
+    /**
+     * @return array
+     */
+    public function asDataProviderArray()
+    {
+        $retValue = [];
+        /** @var Result $result */
+        foreach ($this as $key => $result) {
+            $key = sprintf('#%d: %s', $key, $result->getUrl()->asString());
+            $retValue[$key] = [$result];
+        }
+
+        return $retValue;
+    }
 }
