@@ -7,7 +7,15 @@ php:
   - hhvm
   - nightly
 
+cache:
+  directories:
+    - vendor
+    - bin
+
 before_script: composer install --no-dev
+
+script:
+  - bin/phpunit
 
 after_success:
   - composer require codeclimate/php-test-reporter dev-master
