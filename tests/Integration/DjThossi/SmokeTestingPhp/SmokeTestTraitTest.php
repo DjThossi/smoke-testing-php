@@ -53,17 +53,17 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
 
     public function testRunSmokeTestsWithNotWorkingUrl()
     {
-        $url = 'http://localhost/not-working.html';
+        $url = 'http://255.255.255.255/not-working.html';
 
         $options = $this->createSmokeTestOptions([$url]);
 
         $dataProviderResults = $this->runSmokeTests($options);
         $this->assertInternalType('array', $dataProviderResults);
         $this->assertCount(1, $dataProviderResults);
-        $this->assertArrayHasKey('#0: http://localhost/not-working.html', $dataProviderResults);
-        $this->assertInternalType('array', $dataProviderResults['#0: http://localhost/not-working.html']);
-        $this->assertCount(1, $dataProviderResults['#0: http://localhost/not-working.html']);
-        $this->assertInstanceOf(ErrorResult::class, $dataProviderResults['#0: http://localhost/not-working.html'][0]);
+        $this->assertArrayHasKey('#0: http://255.255.255.255/not-working.html', $dataProviderResults);
+        $this->assertInternalType('array', $dataProviderResults['#0: http://255.255.255.255/not-working.html']);
+        $this->assertCount(1, $dataProviderResults['#0: http://255.255.255.255/not-working.html']);
+        $this->assertInstanceOf(ErrorResult::class, $dataProviderResults['#0: http://255.255.255.255/not-working.html'][0]);
     }
 
     public function testAssertSuccess()
