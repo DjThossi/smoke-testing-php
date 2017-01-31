@@ -7,11 +7,6 @@ php:
   - hhvm
   - nightly
 
-cache:
-  directories:
-    - vendor
-    - bin
-
 before_script: composer install --no-dev
 
 after_success:
