@@ -9,19 +9,9 @@ use DjThossi\SmokeTestingPhp\ValueObject\Url;
 interface Result
 {
     /**
-     * @return Url
-     */
-    public function getUrl();
-
-    /**
      * @return string
      */
     public function asString();
-
-    /**
-     * @return TimeToFirstByte
-     */
-    public function getTimeToFirstByte();
 
     /**
      * @return Body
@@ -32,6 +22,16 @@ interface Result
      * @return StatusCode
      */
     public function getStatusCode();
+
+    /**
+     * @return TimeToFirstByte
+     */
+    public function getTimeToFirstByte();
+
+    /**
+     * @return Url
+     */
+    public function getUrl();
 
     /**
      * @return bool
