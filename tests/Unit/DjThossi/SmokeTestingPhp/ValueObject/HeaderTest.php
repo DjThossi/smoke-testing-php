@@ -17,6 +17,12 @@ class HeaderTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Header::class, $header);
     }
 
+    public function testCanCreateInstanceWithEmptyPassword()
+    {
+        $basicAuth = new Header('key', '');
+        $this->assertInstanceOf(Header::class, $basicAuth);
+    }
+
     /**
      * @dataProvider failingValuesProvider
      *
@@ -50,7 +56,6 @@ class HeaderTest extends PHPUnit_Framework_TestCase
             'Value true' => ['key', true, Header::VALUE_IS_NOT_A_STRING],
             'Value false' => ['key', false, Header::VALUE_IS_NOT_A_STRING],
             'Value object' => ['key', new stdClass(), Header::VALUE_IS_NOT_A_STRING],
-            'Value empty' => ['key', '', Header::VALUE_IS_EMPTY],
         ];
     }
 

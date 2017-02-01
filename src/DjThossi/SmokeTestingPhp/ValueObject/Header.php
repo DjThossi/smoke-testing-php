@@ -12,7 +12,6 @@ class Header
     const KEY_IS_NOT_A_STRING = 1;
     const KEY_IS_EMPTY = 2;
     const VALUE_IS_NOT_A_STRING = 3;
-    const VALUE_IS_EMPTY = 4;
 
     /**
      * @var string
@@ -68,6 +67,5 @@ class Header
     private function ensureValue($value)
     {
         $this->ensureIsString('Value', $value, self::VALUE_IS_NOT_A_STRING);
-        $this->ensureIsNotEmpty('Value', $value, self::VALUE_IS_EMPTY);
     }
 }
