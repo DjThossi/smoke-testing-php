@@ -5,6 +5,7 @@ use DjThossi\SmokeTestingPhp\Options\RunnerOptions;
 use DjThossi\SmokeTestingPhp\Options\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\Result\Result;
 use DjThossi\SmokeTestingPhp\Runner\CurlHttpRunner;
+use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use PHPUnit\Framework\Assert;
 
@@ -83,5 +84,16 @@ trait SmokeTestTrait
     {
         Assert::assertNotNull($result->getBody(), $result->asString());
         Assert::assertNotEmpty($result->getBody()->asString(), $result->asString());
+    }
+
+    /**
+     * @param HeaderKey $key
+     * @param Result $result
+     */
+    protected function assertHeaderKeyExists(HeaderKey $key, Result $result)
+    {
+        Assert::assertNotNull($result->getHeaders(), $result->asString());
+        Assert::assertGreaterThan(0, $result->getHeaders()->count(), $result->asString());
+        Assert::assertTrue($result->getHeaders()->headerKeyExists($key), $result->asString());
     }
 }

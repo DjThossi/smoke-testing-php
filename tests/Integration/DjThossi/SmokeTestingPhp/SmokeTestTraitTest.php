@@ -13,6 +13,9 @@ use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect;
+use DjThossi\SmokeTestingPhp\ValueObject\Header;
+use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
+use DjThossi\SmokeTestingPhp\ValueObject\HeaderValue;
 use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
 use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
@@ -64,7 +67,10 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('#0: http://255.255.255.255/not-working.html', $dataProviderResults);
         $this->assertInternalType('array', $dataProviderResults['#0: http://255.255.255.255/not-working.html']);
         $this->assertCount(1, $dataProviderResults['#0: http://255.255.255.255/not-working.html']);
-        $this->assertInstanceOf(ErrorResult::class, $dataProviderResults['#0: http://255.255.255.255/not-working.html'][0]);
+        $this->assertInstanceOf(
+            ErrorResult::class,
+            $dataProviderResults['#0: http://255.255.255.255/not-working.html'][0]
+        );
     }
 
     public function testAssertSuccess()
@@ -84,6 +90,21 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
         $result = $this->createValidResult('HelloWorld');
 
         $this->assertBodyNotEmpty($result);
+    }
+
+    public function testAssertHeaderKeyExists()
+    {
+        $headerCollection = new HeaderCollection();
+        $headerCollection->addHeader(
+            new Header(
+                new HeaderKey('Working'),
+                new HeaderValue('HelloWorld')
+            )
+        );
+
+        $result = $this->createValidResult('', $headerCollection);
+
+        $this->assertHeaderKeyExists(new HeaderKey('Working'), $result);
     }
 
     /**
@@ -108,13 +129,19 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
     /**
      * @param string $body
      *
+     * @param HeaderCollection $headerCollection
+     *
      * @return ValidResult
      */
-    private function createValidResult($body = '')
+    private function createValidResult($body = '', HeaderCollection $headerCollection = null)
     {
+        if ($headerCollection === null) {
+            $headerCollection = new HeaderCollection();
+        }
+
         $result = new ValidResult(
             new Url('http://www.example.com'),
-            new HeaderCollection(),
+            $headerCollection,
             new Body($body),
             new TimeToFirstByte(100),
             new StatusCode(200)
