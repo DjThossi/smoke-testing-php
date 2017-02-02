@@ -128,7 +128,6 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
 
     /**
      * @param string $body
-     *
      * @param HeaderCollection $headerCollection
      *
      * @return ValidResult

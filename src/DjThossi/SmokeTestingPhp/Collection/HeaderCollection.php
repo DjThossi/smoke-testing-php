@@ -30,7 +30,7 @@ class HeaderCollection extends BaseCollection
     public function headerKeyExists(HeaderKey $searchKey)
     {
         /**
-         * @var Header $header
+         * @var Header
          */
         foreach ($this as $header) {
             if ($searchKey->asString() === $header->getKey()->asString()) {
