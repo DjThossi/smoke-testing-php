@@ -1,8 +1,10 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Runner;
 
+use Curl\CaseInsensitiveArray;
 use Curl\Curl;
 use Curl\MultiCurl;
+use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RequestOptions;
 use DjThossi\SmokeTestingPhp\Result\ErrorResult;
@@ -11,6 +13,7 @@ use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use DjThossi\SmokeTestingPhp\ValueObject\ErrorMessage;
+use DjThossi\SmokeTestingPhp\ValueObject\Header;
 use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
@@ -107,6 +110,7 @@ class CurlHttpRunner implements HttpRunner
 
         $validResult = new ValidResult(
             new Url($curl->url),
+            $this->convertToHeaderCollection($curl->responseHeaders),
             new Body($body),
             new TimeToFirstByte($inMilliseconds),
             new StatusCode($curl->httpStatusCode)
@@ -132,10 +136,29 @@ class CurlHttpRunner implements HttpRunner
             )
         );
 
-        $errorResult = new ErrorResult($url, $errorMessage);
+        $errorResult = new ErrorResult(
+            $url,
+            $this->convertToHeaderCollection($curl->responseHeaders),
+            $errorMessage
+        );
 
         call_user_func($this->errorCallback, $errorResult);
 
         $this->results->addResult($errorResult);
+    }
+
+    /**
+     * @param CaseInsensitiveArray $headers
+     *
+     * @return HeaderCollection
+     */
+    private function convertToHeaderCollection(CaseInsensitiveArray $headers)
+    {
+        $headerCollection = new HeaderCollection();
+        foreach ($headers as $key => $value) {
+            $headerCollection->addHeader(new Header($key, $value));
+        }
+
+        return $headerCollection;
     }
 }

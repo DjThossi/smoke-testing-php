@@ -1,6 +1,7 @@
 <?php
 namespace Unit\DjThossi\SmokeTestingPhp\Result;
 
+use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\Result\ValidResult;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
@@ -19,6 +20,7 @@ class ValidResultTest extends PHPUnit_Framework_TestCase
     {
         $validResult = new ValidResult(
             $this->getUrlMock(),
+            $this->getHeaderCollectionMock(),
             $this->getBodyMock(),
             $this->getTimeToFirstByteMock(),
             $this->getStatusCodeMock()
@@ -29,61 +31,79 @@ class ValidResultTest extends PHPUnit_Framework_TestCase
     public function testCanGetUrl()
     {
         $urlMock = $this->getUrlMock();
+        $headerCollectionMock = $this->getHeaderCollectionMock();
         $bodyMock = $this->getBodyMock();
         $timeToFirstByteMock = $this->getTimeToFirstByteMock();
         $statusCodeMock = $this->getStatusCodeMock();
 
-        $validResult = new ValidResult($urlMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
+        $validResult = new ValidResult($urlMock, $headerCollectionMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
         $this->assertSame($urlMock, $validResult->getUrl());
+    }
+
+    public function testCanGetHeaders()
+    {
+        $urlMock = $this->getUrlMock();
+        $headerCollectionMock = $this->getHeaderCollectionMock();
+        $bodyMock = $this->getBodyMock();
+        $timeToFirstByteMock = $this->getTimeToFirstByteMock();
+        $statusCodeMock = $this->getStatusCodeMock();
+
+        $validResult = new ValidResult($urlMock, $headerCollectionMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
+        $this->assertSame($headerCollectionMock, $validResult->getHeaders());
     }
 
     public function testCanGetBody()
     {
         $urlMock = $this->getUrlMock();
+        $headerCollectionMock = $this->getHeaderCollectionMock();
         $bodyMock = $this->getBodyMock();
         $timeToFirstByteMock = $this->getTimeToFirstByteMock();
         $statusCodeMock = $this->getStatusCodeMock();
 
-        $validResult = new ValidResult($urlMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
+        $validResult = new ValidResult($urlMock, $headerCollectionMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
         $this->assertSame($bodyMock, $validResult->getBody());
     }
 
     public function testCanGetTimeToFirstByte()
     {
         $urlMock = $this->getUrlMock();
+        $headerCollectionMock = $this->getHeaderCollectionMock();
         $bodyMock = $this->getBodyMock();
         $timeToFirstByteMock = $this->getTimeToFirstByteMock();
         $statusCodeMock = $this->getStatusCodeMock();
 
-        $validResult = new ValidResult($urlMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
+        $validResult = new ValidResult($urlMock, $headerCollectionMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
         $this->assertSame($timeToFirstByteMock, $validResult->getTimeToFirstByte());
     }
 
     public function testCanGetStatusCode()
     {
         $urlMock = $this->getUrlMock();
+        $headerCollectionMock = $this->getHeaderCollectionMock();
         $bodyMock = $this->getBodyMock();
         $timeToFirstByteMock = $this->getTimeToFirstByteMock();
         $statusCodeMock = $this->getStatusCodeMock();
 
-        $validResult = new ValidResult($urlMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
+        $validResult = new ValidResult($urlMock, $headerCollectionMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
         $this->assertSame($statusCodeMock, $validResult->getStatusCode());
     }
 
     public function testIsValidResult()
     {
         $urlMock = $this->getUrlMock();
+        $headerCollectionMock = $this->getHeaderCollectionMock();
         $bodyMock = $this->getBodyMock();
         $timeToFirstByteMock = $this->getTimeToFirstByteMock();
         $statusCodeMock = $this->getStatusCodeMock();
 
-        $validResult = new ValidResult($urlMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
+        $validResult = new ValidResult($urlMock, $headerCollectionMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
         $this->assertTrue($validResult->isValidResult());
     }
 
     public function testCatGetAsString()
     {
         $urlMock = $this->getUrlMock();
+        $headerCollectionMock = $this->getHeaderCollectionMock();
         $bodyMock = $this->getBodyMock();
         $bodyMock->expects($this->once())
             ->method('asString')
@@ -99,7 +119,7 @@ class ValidResultTest extends PHPUnit_Framework_TestCase
             ->method('asInteger')
             ->willReturn(222);
 
-        $validResult = new ValidResult($urlMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
+        $validResult = new ValidResult($urlMock, $headerCollectionMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
 
         $expectedString = "StatusCode: 222\nTimeToFirstByte: 555\nBody: HelloWorld";
         $this->assertSame($expectedString, $validResult->asString());
@@ -135,5 +155,13 @@ class ValidResultTest extends PHPUnit_Framework_TestCase
     private function getStatusCodeMock()
     {
         return $this->createMock(StatusCode::class);
+    }
+
+    /**
+     * @return PHPUnit_Framework_MockObject_MockObject|HeaderCollection
+     */
+    private function getHeaderCollectionMock()
+    {
+        return $this->createMock(HeaderCollection::class);
     }
 }

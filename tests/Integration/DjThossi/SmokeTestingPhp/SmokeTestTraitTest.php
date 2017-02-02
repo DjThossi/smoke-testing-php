@@ -1,6 +1,7 @@
 <?php
-namespace Example\DjThossi\SmokeTestingPhp;
+namespace Integration\DjThossi\SmokeTestingPhp;
 
+use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
 use DjThossi\SmokeTestingPhp\Options\SmokeTestOptions;
 use DjThossi\SmokeTestingPhp\Result\ErrorResult;
@@ -113,6 +114,7 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
     {
         $result = new ValidResult(
             new Url('http://www.example.com'),
+            new HeaderCollection(),
             new Body($body),
             new TimeToFirstByte(100),
             new StatusCode(200)
