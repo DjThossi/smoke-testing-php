@@ -3,6 +3,7 @@ namespace Unit\DjThossi\SmokeTestingPhp\Collection;
 
 use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\Header;
+use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 
@@ -50,10 +51,62 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider headerKeyExistsDataProvider
+     *
+     * @param string $headerKeyValue
+     * @param string $searchKeyValue
+     */
+    public function testHeaderKeyExists($headerKeyValue, $searchKeyValue)
+    {
+        $headerKeyMock = $this->getHeaderKeyMock();
+        $headerKeyMock->expects($this->once())
+            ->method('asString')
+            ->willReturn($headerKeyValue);
+
+        $headerMock = $this->getHeaderMock();
+        $headerMock->expects($this->once())
+            ->method('getKey')
+            ->willReturn($headerKeyMock);
+
+        $collection = new HeaderCollection();
+        $collection->addHeader($headerMock);
+
+        $searchKeyMock = $this->getHeaderKeyMock();
+        $searchKeyMock->expects($this->once())
+            ->method('asString')
+            ->willReturn($searchKeyValue);
+
+        if ($headerKeyValue === $searchKeyValue) {
+            $this->assertTrue($collection->headerKeyExists($searchKeyMock));
+        } else {
+            $this->assertFalse($collection->headerKeyExists($searchKeyMock));
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function headerKeyExistsDataProvider()
+    {
+        return [
+            'Finding entry' => ['HelloWorld', 'HelloWorld'],
+            'Entry not found' => ['HelloWorld', 'NotMatching'],
+        ];
+    }
+
+    /**
      * @return PHPUnit_Framework_MockObject_MockObject|Header
      */
     private function getHeaderMock()
     {
         return $this->createMock(Header::class);
+    }
+
+    /**
+     * @return PHPUnit_Framework_MockObject_MockObject|HeaderKey
+     */
+    private function getHeaderKeyMock()
+    {
+        return $this->createMock(HeaderKey::class);
     }
 }

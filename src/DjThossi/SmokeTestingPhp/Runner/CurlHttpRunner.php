@@ -14,6 +14,8 @@ use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use DjThossi\SmokeTestingPhp\ValueObject\ErrorMessage;
 use DjThossi\SmokeTestingPhp\ValueObject\Header;
+use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
+use DjThossi\SmokeTestingPhp\ValueObject\HeaderValue;
 use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
@@ -156,7 +158,8 @@ class CurlHttpRunner implements HttpRunner
     {
         $headerCollection = new HeaderCollection();
         foreach ($headers as $key => $value) {
-            $headerCollection->addHeader(new Header($key, $value));
+            $header = new Header(new HeaderKey($key), new HeaderValue($value));
+            $headerCollection->addHeader($header);
         }
 
         return $headerCollection;
