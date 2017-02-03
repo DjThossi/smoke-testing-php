@@ -9,6 +9,7 @@ use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect;
+use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
 use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
 use PHPUnit_Framework_TestCase;
@@ -43,6 +44,7 @@ class ShowProgressExampleTest extends PHPUnit_Framework_TestCase
         $this->assertSuccess($result);
         $this->assertTimeToFirstByteBelow(new TimeToFirstByte(2000), $result);
         $this->assertBodyNotEmpty($result);
+        $this->assertHeaderKeyExists(new HeaderKey('Status-Line'), $result);
     }
 
     /**

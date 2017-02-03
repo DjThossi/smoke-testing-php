@@ -88,6 +88,7 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
         foreach ($results as $result) {
             $this->assertTrue($result->isValidResult());
             $this->assertEquals($url, $result->getUrl());
+            $this->assertNotEmpty($result->getHeaders());
         }
     }
 
@@ -117,6 +118,7 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
         foreach ($results as $result) {
             $this->assertTrue($result->isValidResult());
             $this->assertEquals($url, $result->getUrl());
+            $this->assertNotEmpty($result->getHeaders());
         }
     }
 
@@ -145,6 +147,7 @@ class CurlHttpRunnerTest extends PHPUnit_Framework_TestCase
         foreach ($results as $result) {
             $this->assertFalse($result->isValidResult());
             $this->assertEquals($url, $result->getUrl());
+            $this->assertNotEmpty($result->getHeaders());
         }
     }
 

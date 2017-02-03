@@ -1,6 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Result;
 
+use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
@@ -17,6 +18,11 @@ interface Result
      * @return Body
      */
     public function getBody();
+
+    /**
+     * @return HeaderCollection
+     */
+    public function getHeaders();
 
     /**
      * @return StatusCode

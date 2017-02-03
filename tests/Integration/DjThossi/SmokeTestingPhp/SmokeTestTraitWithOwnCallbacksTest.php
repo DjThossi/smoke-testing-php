@@ -1,5 +1,5 @@
 <?php
-namespace Example\DjThossi\SmokeTestingPhp;
+namespace Integration\DjThossi\SmokeTestingPhp;
 
 use DjThossi\SmokeTestingPhp\Collection\UrlCollection;
 use DjThossi\SmokeTestingPhp\Options\SmokeTestOptions;

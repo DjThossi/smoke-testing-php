@@ -1,6 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Result;
 
+use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\ErrorMessage;
 use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
@@ -12,18 +13,44 @@ class ErrorResult implements Result
     private $url;
 
     /**
+     * @var HeaderCollection
+     */
+    private $headers;
+
+    /**
      * @var ErrorMessage
      */
     private $errorMessage;
 
     /**
      * @param Url $url
+     * @param HeaderCollection $headers
      * @param ErrorMessage $errorMessage
      */
-    public function __construct(Url $url, ErrorMessage $errorMessage)
+    public function __construct(Url $url, HeaderCollection $headers, ErrorMessage $errorMessage)
     {
         $this->url = $url;
+        $this->headers = $headers;
         $this->errorMessage = $errorMessage;
+    }
+
+    /**
+     * @param string $url
+     * @param array $headerData
+     * @param $errorMessage
+     *
+     * @return ErrorResult
+     */
+    public static function fromPrimitives(
+        $url,
+        array $headerData,
+        $errorMessage
+    ) {
+        return new self(
+            new Url($url),
+            HeaderCollection::fromArray($headerData),
+            new ErrorMessage($errorMessage)
+        );
     }
 
     /**
@@ -32,6 +59,14 @@ class ErrorResult implements Result
     public function asString()
     {
         return $this->errorMessage->asString();
+    }
+
+    /**
+     * @return HeaderCollection
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
     }
 
     /**

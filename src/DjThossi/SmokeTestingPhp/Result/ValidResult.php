@@ -1,6 +1,7 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Result;
 
+use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
@@ -12,6 +13,11 @@ class ValidResult implements Result
      * @var Url
      */
     private $url;
+
+    /**
+     * @var HeaderCollection
+     */
+    private $headers;
 
     /**
      * @var Body
@@ -30,16 +36,48 @@ class ValidResult implements Result
 
     /**
      * @param Url $url
+     * @param HeaderCollection $headers
      * @param Body $body
      * @param TimeToFirstByte $timeToFirstByte
      * @param StatusCode $statusCode
      */
-    public function __construct(Url $url, Body $body, TimeToFirstByte $timeToFirstByte, StatusCode $statusCode)
-    {
+    public function __construct(
+        Url $url,
+        HeaderCollection $headers,
+        Body $body,
+        TimeToFirstByte $timeToFirstByte,
+        StatusCode $statusCode
+    ) {
         $this->url = $url;
+        $this->headers = $headers;
         $this->body = $body;
         $this->timeToFirstByte = $timeToFirstByte;
         $this->statusCode = $statusCode;
+    }
+
+    /**
+     * @param string $url
+     * @param array $headerData
+     * @param string $body
+     * @param int $ttfbInMilliseconds
+     * @param int$statusCode
+     *
+     * @return ValidResult
+     */
+    public static function fromPrimitives(
+        $url,
+        array $headerData,
+        $body,
+        $ttfbInMilliseconds,
+        $statusCode
+    ) {
+        return new self(
+            new Url($url),
+            HeaderCollection::fromArray($headerData),
+            new Body($body),
+            new TimeToFirstByte($ttfbInMilliseconds),
+            new StatusCode($statusCode)
+        );
     }
 
     /**
@@ -56,6 +94,14 @@ class ValidResult implements Result
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * @return HeaderCollection
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
     }
 
     /**

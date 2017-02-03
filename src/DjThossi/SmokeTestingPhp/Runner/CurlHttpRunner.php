@@ -1,19 +1,15 @@
 <?php
 namespace DjThossi\SmokeTestingPhp\Runner;
 
+use Curl\CaseInsensitiveArray;
 use Curl\Curl;
 use Curl\MultiCurl;
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RequestOptions;
 use DjThossi\SmokeTestingPhp\Result\ErrorResult;
 use DjThossi\SmokeTestingPhp\Result\ValidResult;
-use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
-use DjThossi\SmokeTestingPhp\ValueObject\ErrorMessage;
-use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
-use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
-use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 class CurlHttpRunner implements HttpRunner
 {
@@ -101,15 +97,16 @@ class CurlHttpRunner implements HttpRunner
     {
         $curlInfo = $curl->getInfo();
         $timeToFirstByte = $curlInfo['starttransfer_time'] - $curlInfo['pretransfer_time'];
-        $inMilliseconds = (int) round($timeToFirstByte * 1000);
+        $ttfbInMilliseconds = (int) round($timeToFirstByte * 1000);
 
         $body = substr($curl->response, 0, $this->bodyLength->asInteger());
 
-        $validResult = new ValidResult(
-            new Url($curl->url),
-            new Body($body),
-            new TimeToFirstByte($inMilliseconds),
-            new StatusCode($curl->httpStatusCode)
+        $validResult = ValidResult::fromPrimitives(
+            $curl->url,
+            $this->convertHeadersToArray($curl->responseHeaders),
+            $body,
+            $ttfbInMilliseconds,
+            $curl->httpStatusCode
         );
 
         call_user_func($this->successCallback, $validResult);
@@ -122,20 +119,35 @@ class CurlHttpRunner implements HttpRunner
      */
     public function onError(Curl $curl)
     {
-        $url = new Url($curl->url);
-
-        $errorMessage = new ErrorMessage(
-            sprintf(
-                'Curl Code: %s Error: %s',
-                $curl->errorCode,
-                $curl->errorMessage
-            )
+        $errorMessage = sprintf(
+            'Curl Code: %s Error: %s',
+            $curl->errorCode,
+            $curl->errorMessage
         );
 
-        $errorResult = new ErrorResult($url, $errorMessage);
+        $errorResult = ErrorResult::fromPrimitives(
+            $curl->url,
+            $this->convertHeadersToArray($curl->responseHeaders),
+            $errorMessage
+        );
 
         call_user_func($this->errorCallback, $errorResult);
 
         $this->results->addResult($errorResult);
+    }
+
+    /**
+     * @param CaseInsensitiveArray $headers
+     *
+     * @return array
+     */
+    private function convertHeadersToArray(CaseInsensitiveArray $headers)
+    {
+        $headerData = [];
+        foreach ($headers as $key => $value) {
+            $headerData[$key] = $value;
+        }
+
+        return $headerData;
     }
 }
