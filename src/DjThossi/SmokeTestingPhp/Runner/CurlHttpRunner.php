@@ -4,21 +4,12 @@ namespace DjThossi\SmokeTestingPhp\Runner;
 use Curl\CaseInsensitiveArray;
 use Curl\Curl;
 use Curl\MultiCurl;
-use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\Collection\ResultCollection;
 use DjThossi\SmokeTestingPhp\Options\RequestOptions;
 use DjThossi\SmokeTestingPhp\Result\ErrorResult;
 use DjThossi\SmokeTestingPhp\Result\ValidResult;
-use DjThossi\SmokeTestingPhp\ValueObject\Body;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
-use DjThossi\SmokeTestingPhp\ValueObject\ErrorMessage;
-use DjThossi\SmokeTestingPhp\ValueObject\Header;
-use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
-use DjThossi\SmokeTestingPhp\ValueObject\HeaderValue;
-use DjThossi\SmokeTestingPhp\ValueObject\StatusCode;
-use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
-use DjThossi\SmokeTestingPhp\ValueObject\Url;
 
 class CurlHttpRunner implements HttpRunner
 {
@@ -106,16 +97,16 @@ class CurlHttpRunner implements HttpRunner
     {
         $curlInfo = $curl->getInfo();
         $timeToFirstByte = $curlInfo['starttransfer_time'] - $curlInfo['pretransfer_time'];
-        $inMilliseconds = (int) round($timeToFirstByte * 1000);
+        $ttfbInMilliseconds = (int) round($timeToFirstByte * 1000);
 
         $body = substr($curl->response, 0, $this->bodyLength->asInteger());
 
-        $validResult = new ValidResult(
-            new Url($curl->url),
-            $this->convertToHeaderCollection($curl->responseHeaders),
-            new Body($body),
-            new TimeToFirstByte($inMilliseconds),
-            new StatusCode($curl->httpStatusCode)
+        $validResult = ValidResult::fromPrimitives(
+            $curl->url,
+            $this->convertHeadersToArray($curl->responseHeaders),
+            $body,
+            $ttfbInMilliseconds,
+            $curl->httpStatusCode
         );
 
         call_user_func($this->successCallback, $validResult);
@@ -128,19 +119,15 @@ class CurlHttpRunner implements HttpRunner
      */
     public function onError(Curl $curl)
     {
-        $url = new Url($curl->url);
-
-        $errorMessage = new ErrorMessage(
-            sprintf(
-                'Curl Code: %s Error: %s',
-                $curl->errorCode,
-                $curl->errorMessage
-            )
+        $errorMessage = sprintf(
+            'Curl Code: %s Error: %s',
+            $curl->errorCode,
+            $curl->errorMessage
         );
 
-        $errorResult = new ErrorResult(
-            $url,
-            $this->convertToHeaderCollection($curl->responseHeaders),
+        $errorResult = ErrorResult::fromPrimitives(
+            $curl->url,
+            $this->convertHeadersToArray($curl->responseHeaders),
             $errorMessage
         );
 
@@ -152,16 +139,15 @@ class CurlHttpRunner implements HttpRunner
     /**
      * @param CaseInsensitiveArray $headers
      *
-     * @return HeaderCollection
+     * @return array
      */
-    private function convertToHeaderCollection(CaseInsensitiveArray $headers)
+    private function convertHeadersToArray(CaseInsensitiveArray $headers)
     {
-        $headerCollection = new HeaderCollection();
+        $headerData = [];
         foreach ($headers as $key => $value) {
-            $header = new Header(new HeaderKey($key), new HeaderValue($value));
-            $headerCollection->addHeader($header);
+            $headerData[$key] = $value;
         }
 
-        return $headerCollection;
+        return $headerData;
     }
 }

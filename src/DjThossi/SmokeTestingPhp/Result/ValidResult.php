@@ -56,6 +56,31 @@ class ValidResult implements Result
     }
 
     /**
+     * @param string $url
+     * @param array $headerData
+     * @param string $body
+     * @param int $ttfbInMilliseconds
+     * @param int$statusCode
+     *
+     * @return ValidResult
+     */
+    public static function fromPrimitives(
+        $url,
+        array $headerData,
+        $body,
+        $ttfbInMilliseconds,
+        $statusCode
+    ) {
+        return new self(
+            new Url($url),
+            HeaderCollection::fromArray($headerData),
+            new Body($body),
+            new TimeToFirstByte($ttfbInMilliseconds),
+            new StatusCode($statusCode)
+        );
+    }
+
+    /**
      * @return Url
      */
     public function getUrl()

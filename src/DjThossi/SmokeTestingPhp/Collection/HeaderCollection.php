@@ -7,6 +7,22 @@ use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
 class HeaderCollection extends BaseCollection
 {
     /**
+     * @param array $headerData
+     *
+     * @return HeaderCollection
+     */
+    public static function fromArray(array $headerData)
+    {
+        $headerCollection = new self();
+        foreach ($headerData as $key => $value) {
+            $header = Header::fromPrimitives($key, $value);
+            $headerCollection->addHeader($header);
+        }
+
+        return $headerCollection;
+    }
+
+    /**
      * @param Header $header
      */
     public function addHeader(Header $header)

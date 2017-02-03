@@ -28,6 +28,12 @@ class ValidResultTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(ValidResult::class, $validResult);
     }
 
+    public function testCanCreateFromPrimitives()
+    {
+        $validResult = ValidResult::fromPrimitives('http://loclahost', [], 'BODY', 100, 200);
+        $this->assertInstanceOf(ValidResult::class, $validResult);
+    }
+
     public function testCanGetUrl()
     {
         $urlMock = $this->getUrlMock();

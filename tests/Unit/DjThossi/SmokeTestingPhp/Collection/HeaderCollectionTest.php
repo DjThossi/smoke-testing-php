@@ -25,6 +25,13 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
         $this->assertCount(0, $collection);
     }
 
+    public function testCanCreateFromArray()
+    {
+        $collection = HeaderCollection::fromArray(['key1' => 'value1']);
+
+        $this->assertInstanceOf(HeaderCollection::class, $collection);
+    }
+
     public function testCanAddToCollection()
     {
         $header1 = $this->getHeaderMock();

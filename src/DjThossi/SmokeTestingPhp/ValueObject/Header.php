@@ -24,6 +24,20 @@ class Header
     }
 
     /**
+     * @param string $key
+     * @param string $value
+     *
+     * @return Header
+     */
+    public static function fromPrimitives($key, $value)
+    {
+        return new self(
+            new HeaderKey($key),
+            new HeaderValue($value)
+        );
+    }
+
+    /**
      * @return HeaderKey
      */
     public function getKey()

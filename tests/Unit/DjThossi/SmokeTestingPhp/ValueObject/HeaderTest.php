@@ -18,6 +18,15 @@ class HeaderTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Header::class, $header);
     }
 
+    public function testCanCreateFromPrimitives()
+    {
+        $key = 'key';
+        $value = 'value';
+        $header = Header::fromPrimitives($key, $value);
+        $this->assertSame($key, $header->getKey()->asString());
+        $this->assertSame($value, $header->getValue()->asString());
+    }
+
     public function testCanGetKey()
     {
         $key = $this->getHeaderKeyMock();

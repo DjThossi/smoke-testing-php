@@ -25,6 +25,12 @@ class ErrorResultTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(ErrorResult::class, $errorResult);
     }
 
+    public function testCanCreateFromPrimitives()
+    {
+        $validResult = ErrorResult::fromPrimitives('http://loclahost', [], 'error message');
+        $this->assertInstanceOf(ErrorResult::class, $validResult);
+    }
+
     public function testCanGetUrl()
     {
         $urlMock = $this->getUrlMock();

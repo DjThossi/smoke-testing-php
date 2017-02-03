@@ -35,6 +35,25 @@ class ErrorResult implements Result
     }
 
     /**
+     * @param string $url
+     * @param array $headerData
+     * @param $errorMessage
+     *
+     * @return ErrorResult
+     */
+    public static function fromPrimitives(
+        $url,
+        array $headerData,
+        $errorMessage
+    ) {
+        return new self(
+            new Url($url),
+            HeaderCollection::fromArray($headerData),
+            new ErrorMessage($errorMessage)
+        );
+    }
+
+    /**
      * @return string
      */
     public function asString()
