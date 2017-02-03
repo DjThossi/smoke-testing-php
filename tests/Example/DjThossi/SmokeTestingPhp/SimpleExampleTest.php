@@ -9,6 +9,7 @@ use DjThossi\SmokeTestingPhp\ValueObject\BasicAuth;
 use DjThossi\SmokeTestingPhp\ValueObject\BodyLength;
 use DjThossi\SmokeTestingPhp\ValueObject\Concurrency;
 use DjThossi\SmokeTestingPhp\ValueObject\FollowRedirect;
+use DjThossi\SmokeTestingPhp\ValueObject\Header;
 use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
 use DjThossi\SmokeTestingPhp\ValueObject\RequestTimeout;
 use DjThossi\SmokeTestingPhp\ValueObject\TimeToFirstByte;
@@ -29,6 +30,7 @@ class SimpleExampleTest extends PHPUnit_Framework_TestCase
         $this->assertTimeToFirstByteBelow(new TimeToFirstByte(2000), $result);
         $this->assertBodyNotEmpty($result);
         $this->assertHeaderKeyExists(new HeaderKey('Status-Line'), $result);
+        $this->assertHeaderExists(Header::fromPrimitives('Status-Line', 'HTTP/1.1 200 OK'), $result);
     }
 
     /**
