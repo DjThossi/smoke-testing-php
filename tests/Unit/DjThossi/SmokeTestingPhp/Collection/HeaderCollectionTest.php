@@ -5,10 +5,13 @@ use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
 use DjThossi\SmokeTestingPhp\Collection\HeaderNotFoundException;
 use DjThossi\SmokeTestingPhp\ValueObject\Header;
 use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
+use DjThossi\SmokeTestingPhp\ValueObject\HeaderValue;
+use PHPUnit_Framework_MockObject_Matcher_InvokedRecorder;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 
 /**
+ * @covers \DjThossi\SmokeTestingPhp\Collection\HeaderNotFoundException
  * @covers \DjThossi\SmokeTestingPhp\Collection\HeaderCollection
  * @covers \DjThossi\SmokeTestingPhp\Collection\BaseCollection
  */
@@ -59,23 +62,23 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
      */
     public function testHeaderKeyExists($headerKeyValue, $searchKeyValue)
     {
-        $headerKeyMock = $this->getHeaderKeyMock();
-        $headerKeyMock->expects($this->once())
-            ->method('asString')
-            ->willReturn($headerKeyValue);
+        $headerKeyMock = $this->getHeaderKeyMock(
+            $this->once(),
+            $headerKeyValue
+        );
 
-        $headerMock = $this->getHeaderMock();
-        $headerMock->expects($this->once())
-            ->method('getKey')
-            ->willReturn($headerKeyMock);
+        $headerMock = $this->getHeaderMock(
+            $this->once(),
+            $headerKeyMock
+        );
 
         $collection = new HeaderCollection();
         $collection->addHeader($headerMock);
 
-        $searchKeyMock = $this->getHeaderKeyMock();
-        $searchKeyMock->expects($this->atLeastOnce())
-            ->method('asString')
-            ->willReturn($searchKeyValue);
+        $searchKeyMock = $this->getHeaderKeyMock(
+            $this->atLeastOnce(),
+            $searchKeyValue
+        );
 
         if ($headerKeyValue === $searchKeyValue) {
             $this->assertTrue($collection->headerKeyExists($searchKeyMock));
@@ -103,28 +106,34 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
      */
     public function testGetHeader($headerKeyValue, $searchKeyValue)
     {
-        $headerKeyMock = $this->getHeaderKeyMock();
-        $headerKeyMock->expects($this->once())
-            ->method('asString')
-            ->willReturn($headerKeyValue);
+        $headerKeyMock = $this->getHeaderKeyMock(
+            $this->once(),
+            $headerKeyValue
+        );
 
-        $headerMock = $this->getHeaderMock();
-        $headerMock->expects($this->once())
-            ->method('getKey')
-            ->willReturn($headerKeyMock);
+        $headerMock = $this->getHeaderMock(
+            $this->once(),
+            $headerKeyMock
+        );
 
         $collection = new HeaderCollection();
         $collection->addHeader($headerMock);
 
-        $searchKeyMock = $this->getHeaderKeyMock();
-        $searchKeyMock->expects($this->atLeastOnce())
-            ->method('asString')
-            ->willReturn($searchKeyValue);
+        $searchKeyMock = $this->getHeaderKeyMock(
+            $this->atLeastOnce(),
+            $searchKeyValue
+        );
 
         if ($headerKeyValue === $searchKeyValue) {
             $this->assertSame($headerMock, $collection->getHeader($searchKeyMock));
         } else {
             $this->expectException(HeaderNotFoundException::class);
+            $this->expectExceptionMessage(
+                sprintf(
+                    'Header with key "%s" not found',
+                    $searchKeyValue
+                )
+            );
             $collection->getHeader($searchKeyMock);
         }
     }
@@ -141,18 +150,129 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return PHPUnit_Framework_MockObject_MockObject|Header
+     * @dataProvider getHeaderExistsDataProvider
+     *
+     * @param string $headerKeyValue
+     * @param string $headerValue
+     * @param string $searchKeyValue
+     * @param string $searchValue
      */
-    private function getHeaderMock()
+    public function testHeaderExists($headerKeyValue, $headerValue, $searchKeyValue, $searchValue)
     {
-        return $this->createMock(Header::class);
+        $found = $headerKeyValue === $searchKeyValue && $headerValue === $searchValue;
+
+        $headerKeyMock = $this->getHeaderKeyMock(
+            $this->once(),
+            $headerKeyValue
+        );
+        $headerValueMock = $this->getHeaderValueMock(
+            $found ? $this->once() : $this->any(),
+            $headerValue
+        );
+        $headerMock = $this->getHeaderMock(
+            $this->once(),
+            $headerKeyMock,
+            $found ? $this->once() : $this->any(),
+            $headerValueMock
+        );
+
+        $collection = new HeaderCollection();
+        $collection->addHeader($headerMock);
+
+        $searchKeyMock = $this->getHeaderKeyMock(
+            $this->atLeastOnce(),
+            $searchKeyValue
+        );
+        $searchValueMock = $this->getHeaderValueMock(
+            $found ? $this->once() : $this->any(),
+            $searchValue
+        );
+        $searchHeaderMock = $this->getHeaderMock(
+            $this->once(),
+            $searchKeyMock,
+            $found ? $this->once() : $this->any(),
+            $searchValueMock
+        );
+
+        if ($found) {
+            $this->assertTrue($collection->headerExists($searchHeaderMock));
+        } else {
+            $this->assertFalse($collection->headerExists($searchHeaderMock));
+        }
     }
 
     /**
-     * @return PHPUnit_Framework_MockObject_MockObject|HeaderKey
+     * @return array
      */
-    private function getHeaderKeyMock()
+    public function getHeaderExistsDataProvider()
     {
-        return $this->createMock(HeaderKey::class);
+        return [
+            'Finding entry' => ['HeaderKey', 'HeaderValue', 'HeaderKey', 'HeadValue'],
+            'HeaderKey not found' => ['HeaderKey', 'HeaderValue', 'WrongHeaderKey', 'HeadValue'],
+            'HeaderValue not found' => ['HeaderKey', 'HeaderValue', 'HeaderKey', 'WrongHeadValue'],
+        ];
+    }
+
+    /**
+     * @param PHPUnit_Framework_MockObject_Matcher_InvokedRecorder $expectsKey
+     * @param HeaderKey $headerKey
+     * @param PHPUnit_Framework_MockObject_Matcher_InvokedRecorder $expectsValue
+     * @param HeaderValue $headerValue
+     *
+     * @return Header|PHPUnit_Framework_MockObject_MockObject
+     */
+    private function getHeaderMock(
+        PHPUnit_Framework_MockObject_Matcher_InvokedRecorder $expectsKey = null,
+        HeaderKey $headerKey = null,
+        PHPUnit_Framework_MockObject_Matcher_InvokedRecorder $expectsValue = null,
+        HeaderValue $headerValue = null
+    ) {
+        $headerMock = $this->createMock(Header::class);
+
+        if ($expectsKey !== null) {
+            $headerMock->expects($expectsKey)
+                ->method('getKey')
+                ->willReturn($headerKey);
+        }
+
+        if ($expectsValue !== null) {
+            $headerMock->expects($expectsValue)
+                ->method('getValue')
+                ->willReturn($headerValue);
+        }
+
+        return $headerMock;
+    }
+
+    /**
+     * @param PHPUnit_Framework_MockObject_Matcher_InvokedRecorder $expects
+     * @param string $willReturn
+     *
+     * @return HeaderKey|PHPUnit_Framework_MockObject_MockObject
+     */
+    private function getHeaderKeyMock(PHPUnit_Framework_MockObject_Matcher_InvokedRecorder $expects, $willReturn)
+    {
+        $headerKeyMock = $this->createMock(HeaderKey::class);
+        $headerKeyMock->expects($expects)
+            ->method('asString')
+            ->willReturn($willReturn);
+
+        return $headerKeyMock;
+    }
+
+    /**
+     * @param PHPUnit_Framework_MockObject_Matcher_InvokedRecorder $expects
+     * @param string $willReturn
+     *
+     * @return HeaderValue|PHPUnit_Framework_MockObject_MockObject
+     */
+    private function getHeaderValueMock(PHPUnit_Framework_MockObject_Matcher_InvokedRecorder $expects, $willReturn)
+    {
+        $headerValueMock = $this->createMock(HeaderValue::class);
+        $headerValueMock->expects($expects)
+            ->method('asString')
+            ->willReturn($willReturn);
+
+        return $headerValueMock;
     }
 }

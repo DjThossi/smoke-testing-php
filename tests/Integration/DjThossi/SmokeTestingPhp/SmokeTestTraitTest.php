@@ -107,6 +107,27 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
         $this->assertHeaderKeyExists(new HeaderKey('Working'), $result);
     }
 
+    public function testAssertHeaderExists()
+    {
+        $headerCollection = new HeaderCollection();
+        $headerCollection->addHeader(
+            new Header(
+                new HeaderKey('Working'),
+                new HeaderValue('HelloWorld')
+            )
+        );
+
+        $result = $this->createValidResult('', $headerCollection);
+
+        $this->assertHeaderExists(
+            new Header(
+                new HeaderKey('Working'),
+                new HeaderValue('HelloWorld')
+            ),
+            $result
+        );
+    }
+
     /**
      * @param array $urls
      *

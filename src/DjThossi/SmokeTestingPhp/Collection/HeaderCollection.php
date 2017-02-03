@@ -53,4 +53,20 @@ class HeaderCollection extends BaseCollection
             return false;
         }
     }
+
+    /**
+     * @param Header $searchHeader
+     *
+     * @return bool
+     */
+    public function headerExists(Header $searchHeader)
+    {
+        try {
+            $header = $this->getHeader($searchHeader->getKey());
+
+            return $header->getValue()->asString() === $searchHeader->getValue()->asString();
+        } catch (HeaderNotFoundException $exception) {
+            return false;
+        }
+    }
 }
