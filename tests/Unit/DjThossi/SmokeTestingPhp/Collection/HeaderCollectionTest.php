@@ -82,9 +82,11 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
 
         if ($headerKeyValue === $searchKeyValue) {
             $this->assertTrue($collection->headerKeyExists($searchKeyMock));
-        } else {
-            $this->assertFalse($collection->headerKeyExists($searchKeyMock));
+
+            return;
         }
+
+        $this->assertFalse($collection->headerKeyExists($searchKeyMock));
     }
 
     /**
@@ -126,16 +128,18 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
 
         if ($headerKeyValue === $searchKeyValue) {
             $this->assertSame($headerMock, $collection->getHeader($searchKeyMock));
-        } else {
-            $this->expectException(HeaderNotFoundException::class);
-            $this->expectExceptionMessage(
-                sprintf(
-                    'Header with key "%s" not found',
-                    $searchKeyValue
-                )
-            );
-            $collection->getHeader($searchKeyMock);
+
+            return;
         }
+
+        $this->expectException(HeaderNotFoundException::class);
+        $this->expectExceptionMessage(
+            sprintf(
+                'Header with key "%s" not found',
+                $searchKeyValue
+            )
+        );
+        $collection->getHeader($searchKeyMock);
     }
 
     /**
@@ -196,9 +200,11 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
 
         if ($found) {
             $this->assertTrue($collection->headerExists($searchHeaderMock));
-        } else {
-            $this->assertFalse($collection->headerExists($searchHeaderMock));
+
+            return;
         }
+
+        $this->assertFalse($collection->headerExists($searchHeaderMock));
     }
 
     /**
