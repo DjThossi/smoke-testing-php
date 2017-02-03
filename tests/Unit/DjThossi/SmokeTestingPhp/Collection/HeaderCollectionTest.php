@@ -2,6 +2,7 @@
 namespace Unit\DjThossi\SmokeTestingPhp\Collection;
 
 use DjThossi\SmokeTestingPhp\Collection\HeaderCollection;
+use DjThossi\SmokeTestingPhp\Collection\HeaderNotFoundException;
 use DjThossi\SmokeTestingPhp\ValueObject\Header;
 use DjThossi\SmokeTestingPhp\ValueObject\HeaderKey;
 use PHPUnit_Framework_MockObject_MockObject;
@@ -72,7 +73,7 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
         $collection->addHeader($headerMock);
 
         $searchKeyMock = $this->getHeaderKeyMock();
-        $searchKeyMock->expects($this->once())
+        $searchKeyMock->expects($this->atLeastOnce())
             ->method('asString')
             ->willReturn($searchKeyValue);
 
@@ -87,6 +88,51 @@ class HeaderCollectionTest extends PHPUnit_Framework_TestCase
      * @return array
      */
     public function headerKeyExistsDataProvider()
+    {
+        return [
+            'Finding entry' => ['HelloWorld', 'HelloWorld'],
+            'Entry not found' => ['HelloWorld', 'NotMatching'],
+        ];
+    }
+
+    /**
+     * @dataProvider getHeaderDataProvider
+     *
+     * @param string $headerKeyValue
+     * @param string $searchKeyValue
+     */
+    public function testGetHeader($headerKeyValue, $searchKeyValue)
+    {
+        $headerKeyMock = $this->getHeaderKeyMock();
+        $headerKeyMock->expects($this->once())
+            ->method('asString')
+            ->willReturn($headerKeyValue);
+
+        $headerMock = $this->getHeaderMock();
+        $headerMock->expects($this->once())
+            ->method('getKey')
+            ->willReturn($headerKeyMock);
+
+        $collection = new HeaderCollection();
+        $collection->addHeader($headerMock);
+
+        $searchKeyMock = $this->getHeaderKeyMock();
+        $searchKeyMock->expects($this->atLeastOnce())
+            ->method('asString')
+            ->willReturn($searchKeyValue);
+
+        if ($headerKeyValue === $searchKeyValue) {
+            $this->assertSame($headerMock, $collection->getHeader($searchKeyMock));
+        } else {
+            $this->expectException(HeaderNotFoundException::class);
+            $collection->getHeader($searchKeyMock);
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getHeaderDataProvider()
     {
         return [
             'Finding entry' => ['HelloWorld', 'HelloWorld'],

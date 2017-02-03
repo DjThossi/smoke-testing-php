@@ -25,19 +25,32 @@ class HeaderCollection extends BaseCollection
     /**
      * @param HeaderKey $searchKey
      *
+     * @throws HeaderNotFoundException
+     *
+     * @return Header
+     */
+    public function getHeader(HeaderKey $searchKey)
+    {
+        foreach ($this as $header) {
+            if ($searchKey->asString() === $header->getKey()->asString()) {
+                return $header;
+            }
+        }
+
+        throw new HeaderNotFoundException($searchKey);
+    }
+
+    /**
+     * @param HeaderKey $searchKey
+     *
      * @return bool
      */
     public function headerKeyExists(HeaderKey $searchKey)
     {
-        /**
-         * @var Header
-         */
-        foreach ($this as $header) {
-            if ($searchKey->asString() === $header->getKey()->asString()) {
-                return true;
-            }
+        try {
+            return $this->getHeader($searchKey) !== null;
+        } catch (HeaderNotFoundException $exception) {
+            return false;
         }
-
-        return false;
     }
 }
