@@ -127,7 +127,7 @@ class ValidResultTest extends PHPUnit_Framework_TestCase
 
         $validResult = new ValidResult($urlMock, $headerCollectionMock, $bodyMock, $timeToFirstByteMock, $statusCodeMock);
 
-        $expectedString = "StatusCode: 222\nTimeToFirstByte: 555\nBody: HelloWorld";
+        $expectedString = "StatusCode: 222\nTimeToFirstByte: 555ms\nBody: HelloWorld";
         $this->assertSame($expectedString, $validResult->asString());
     }
 

@@ -128,7 +128,7 @@ class ValidResult implements Result
     public function asString()
     {
         return sprintf(
-            "StatusCode: %s\nTimeToFirstByte: %u\nBody: %s",
+            "StatusCode: %s\nTimeToFirstByte: %ums\nBody: %s",
             $this->statusCode->asInteger(),
             $this->timeToFirstByte->inMilliSeconds(),
             $this->body->asString()
