@@ -30,7 +30,7 @@ class SimpleExampleTest extends PHPUnit_Framework_TestCase
         $this->assertTimeToFirstByteBelow(new TimeToFirstByte(2000), $result);
         $this->assertBodyNotEmpty($result);
         $this->assertHeaderKeyExists(new HeaderKey('Status-Line'), $result);
-        $this->assertHeaderExists(Header::fromPrimitives('Status-Line', 'HTTP/1.1 200 OK'), $result);
+        $this->assertHasHeader(Header::fromPrimitives('Status-Line', 'HTTP/1.1 200 OK'), $result);
     }
 
     /**

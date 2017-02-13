@@ -108,7 +108,7 @@ trait SmokeTestTrait
      * @param Header $searchHeader
      * @param Result $result
      */
-    protected function assertHeaderExists(Header $searchHeader, Result $result)
+    protected function assertHasHeader(Header $searchHeader, Result $result)
     {
         $errorMessage = "Header not found in this SmokeTest\n" . $result->asString();
 

@@ -107,7 +107,7 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
         $this->assertHeaderKeyExists(new HeaderKey('Working'), $result);
     }
 
-    public function testAssertHeaderExists()
+    public function testAssertHasHeader()
     {
         $headerCollection = new HeaderCollection();
         $headerCollection->addHeader(
@@ -119,7 +119,7 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
 
         $result = $this->createValidResult('', $headerCollection);
 
-        $this->assertHeaderExists(
+        $this->assertHasHeader(
             new Header(
                 new HeaderKey('Working'),
                 new HeaderValue('HelloWorld')
