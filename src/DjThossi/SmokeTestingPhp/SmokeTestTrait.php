@@ -115,4 +115,15 @@ trait SmokeTestTrait
         Assert::assertGreaterThan(0, $result->getHeaders()->count(), $errorMessage);
         Assert::assertTrue($result->getHeaders()->headerExists($searchHeader), $errorMessage);
     }
+
+    /**
+     * @param Header $searchHeader
+     * @param Result $result
+     */
+    protected function assertResultNotHasHeader(Header $searchHeader, Result $result)
+    {
+        $errorMessage = "Header found in this SmokeTest\n" . $result->asString();
+
+        Assert::assertFalse($result->getHeaders()->headerExists($searchHeader), $errorMessage);
+    }
 }

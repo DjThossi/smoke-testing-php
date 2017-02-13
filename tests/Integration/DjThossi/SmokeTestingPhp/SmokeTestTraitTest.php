@@ -128,6 +128,27 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testAssertResultNotHasHeader()
+    {
+        $headerCollection = new HeaderCollection();
+        $headerCollection->addHeader(
+            new Header(
+                new HeaderKey('Existing'),
+                new HeaderValue('HelloWorld')
+            )
+        );
+
+        $result = $this->createValidResult('', $headerCollection);
+
+        $this->assertResultNotHasHeader(
+            new Header(
+                new HeaderKey('NotExisting'),
+                new HeaderValue('HelloWorld')
+            ),
+            $result
+        );
+    }
+
     /**
      * @param array $urls
      *
