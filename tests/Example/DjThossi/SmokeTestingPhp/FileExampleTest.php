@@ -29,7 +29,7 @@ class FileExampleTest extends PHPUnit_Framework_TestCase
         $this->assertSuccess($result);
         $this->assertTimeToFirstByteBelow(new TimeToFirstByte(2000), $result);
         $this->assertBodyNotEmpty($result);
-        $this->assertHeaderKeyExists(new HeaderKey('Status-Line'), $result);
+        $this->assertHasHeaderKey(new HeaderKey('Status-Line'), $result);
         $this->assertHasHeader(Header::fromPrimitives('Status-Line', 'HTTP/1.1 200 OK'), $result);
     }
 

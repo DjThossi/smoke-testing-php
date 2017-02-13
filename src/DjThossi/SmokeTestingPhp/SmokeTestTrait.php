@@ -96,7 +96,7 @@ trait SmokeTestTrait
      * @param HeaderKey $key
      * @param Result $result
      */
-    protected function assertHeaderKeyExists(HeaderKey $key, Result $result)
+    protected function assertHasHeaderKey(HeaderKey $key, Result $result)
     {
         $errorMessage = "HeaderKey not found in this SmokeTest\n" . $result->asString();
 
