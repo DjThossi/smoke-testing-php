@@ -128,7 +128,7 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function testAssertResultNotHasHeader()
+    public function testAssertNotHasHeader()
     {
         $headerCollection = new HeaderCollection();
         $headerCollection->addHeader(
@@ -140,7 +140,7 @@ class SmokeTestTraitTest extends PHPUnit_Framework_TestCase
 
         $result = $this->createValidResult('', $headerCollection);
 
-        $this->assertResultNotHasHeader(
+        $this->assertNotHasHeader(
             new Header(
                 new HeaderKey('NotExisting'),
                 new HeaderValue('HelloWorld')
