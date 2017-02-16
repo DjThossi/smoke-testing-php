@@ -13,7 +13,7 @@ cache:
 
 before_script:
   - composer validate
-  - composer install --no-dev
+  - composer install
 
 script:
   - bin/phpunit
