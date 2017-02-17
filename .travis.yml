@@ -12,7 +12,9 @@ cache:
     - vendor
     - bin
 
-before_script: composer install --no-dev
+before_script:
+  - composer validate
+  - composer install --no-dev
 
 script:
   - bin/phpunit
