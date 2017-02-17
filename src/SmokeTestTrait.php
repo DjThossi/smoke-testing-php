@@ -61,7 +61,10 @@ trait SmokeTestTrait
      */
     protected function assertSuccess(Result $result)
     {
-        $errorMessage = "This SmokeTest was not successful\n" . $result->asString();
+        $errorMessage = sprintf(
+            "This SmokeTest was not successful\n%s",
+            $result->asString()
+        );
 
         Assert::assertTrue($result->isValidResult(), $errorMessage);
         Assert::assertSame(200, $result->getStatusCode()->asInteger(), $errorMessage);
@@ -73,7 +76,10 @@ trait SmokeTestTrait
      */
     protected function assertTimeToFirstByteBelow(TimeToFirstByte $maxTimeToFirstByte, Result $result)
     {
-        $errorMessage = "This SmokeTest was to slow\n" . $result->asString();
+        $errorMessage = sprintf(
+            "This SmokeTest was to slow\n%s",
+            $result->asString()
+        );
 
         Assert::assertLessThanOrEqual(
             $maxTimeToFirstByte->inMilliSeconds(),
@@ -87,7 +93,10 @@ trait SmokeTestTrait
      */
     protected function assertBodyNotEmpty(Result $result)
     {
-        $errorMessage = "The body of this SmokeTest is empty\n" . $result->asString();
+        $errorMessage = sprintf(
+            "The body of this SmokeTest is empty\n%s",
+            $result->asString()
+        );
 
         Assert::assertNotEmpty($result->getBody()->asString(), $errorMessage);
     }
@@ -98,7 +107,10 @@ trait SmokeTestTrait
      */
     protected function assertHasHeaderKey(HeaderKey $key, Result $result)
     {
-        $errorMessage = "HeaderKey not found in this SmokeTest\n" . $result->asString();
+        $errorMessage = sprintf(
+            "HeaderKey not found in this SmokeTest\n%s",
+            $result->asString()
+        );
 
         Assert::assertGreaterThan(0, $result->getHeaders()->count(), $errorMessage);
         Assert::assertTrue($result->getHeaders()->headerKeyExists($key), $errorMessage);
@@ -110,7 +122,10 @@ trait SmokeTestTrait
      */
     protected function assertHasHeader(Header $searchHeader, Result $result)
     {
-        $errorMessage = "Header not found in this SmokeTest\n" . $result->asString();
+        $errorMessage = sprintf(
+            "Header not found in this SmokeTest\n%s",
+            $result->asString()
+        );
 
         Assert::assertGreaterThan(0, $result->getHeaders()->count(), $errorMessage);
         Assert::assertTrue($result->getHeaders()->headerExists($searchHeader), $errorMessage);
@@ -122,7 +137,10 @@ trait SmokeTestTrait
      */
     protected function assertNotHasHeader(Header $searchHeader, Result $result)
     {
-        $errorMessage = "Header found in this SmokeTest\n" . $result->asString();
+        $errorMessage = sprintf(
+            "Header found in this SmokeTest\n%s",
+            $result->asString()
+        );
 
         Assert::assertFalse($result->getHeaders()->headerExists($searchHeader), $errorMessage);
     }
