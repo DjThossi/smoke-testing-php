@@ -12,7 +12,7 @@ The Smoke Testing PHP library is supposed to help you doing proper SmokeTests.
 You have several options to install this package
 
 ### Composer
-`composer require djthossi/smoke-testing-php`
+`composer require --dev djthossi/smoke-testing-php`
 
 ### Git
 `git clone https://github.com/DjThossi/Smoke-Testing-PHP.git`
