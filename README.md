@@ -22,7 +22,7 @@ You have several options to install this package
 
 ## Example Code
 In following directory you'll find example code how to use this tool.
-[/tests/Example/DjThossi/SmokeTestingPhp](https://github.com/DjThossi/smoke-testing-php/tree/master/tests/Example/DjThossi/SmokeTestingPhp)
+[/tests/Example](https://github.com/DjThossi/smoke-testing-php/tree/master/tests/Example)
 
 ## Contribution
 You are welcome to contribute to this repository. We're using a git flow approach.
@@ -32,3 +32,4 @@ Please open you PR against develop branch.
 
 ### Contributors
 - [Sebastian Thoss](http://www.sebastianthoss.de)
+- [Andreas Möller](https://github.com/localheinz)

@@ -12,10 +12,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "DjThossi\\": "src/DjThossi",
-            "Example\\": "tests/Example",
-            "Integration\\": "tests/Integration",
-            "Unit\\": "tests/Unit"
+            "DjThossi\\SmokeTestingPhp\\": "src/",
+            "DjThossi\\SmokeTestingPhp\\Test\\": "tests/"
         }
     },
     "config": {
