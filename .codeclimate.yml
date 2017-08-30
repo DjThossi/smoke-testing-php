@@ -7,10 +7,6 @@ engines:
         php:
           mass_threshold: 200
     exclude_fingerprints:
-      - ca748db3788db662b83758c5441911e2
-      - dde540d81901b79bdf71a96de2e0a435
-      - d149bd10d4c8a0cc5f844479901e9ecb
-      - 049bf3636cacd7560c6dea70a55163f3
 
   fixme:
     enabled: true
@@ -21,10 +17,6 @@ engines:
       CleanCode/StaticAccess:
         enabled: false
     exclude_fingerprints:
-      - 5a5f94d601abbfbcfc9414d05bdfc022
-      - 672c6ef99238e62865f6211a3cd031c0
-      - 26cc9da7b2e1fbb29b2f3dd4d7e5ffc6
-      - f7c4500fef8a6da33d58b55ae504d893
 
 ratings:
   paths:

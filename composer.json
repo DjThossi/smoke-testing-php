@@ -12,22 +12,20 @@
     ],
     "autoload": {
         "psr-4": {
-            "DjThossi\\": "src/DjThossi",
-            "Example\\": "tests/Example",
-            "Integration\\": "tests/Integration",
-            "Unit\\": "tests/Unit"
+            "DjThossi\\SmokeTestingPhp\\": "src/",
+            "DjThossi\\SmokeTestingPhp\\Test\\": "tests/"
         }
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "sort-packages": true
     },
     "require": {
         "php": ">=5.6",
-        "phpunit/phpunit": "~5.7",
-        "php-curl-class/php-curl-class": "7.1.0",
-        "djthossi/ensure": "~1"
+        "djthossi/ensure": "~1",
+        "php-curl-class/php-curl-class": "~7.1",
+        "phpunit/phpunit": "~5.7"
     },
     "require-dev": {
-        "symfony/var-dumper": "^3.2"
     }
 }
