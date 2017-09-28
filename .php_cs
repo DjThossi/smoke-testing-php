@@ -24,7 +24,7 @@ return PhpCsFixer\Config::create()
         'phpdoc_order' => true,
         'concat_space' => ['spacing' => 'one'],
         'phpdoc_no_empty_return' => false,
-        'use_yoda_style' => false,
+        'yoda_style' => false,
     ))
     ->setFinder(
         PhpCsFixer\Finder::create()
