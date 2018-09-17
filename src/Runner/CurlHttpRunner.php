@@ -109,7 +109,7 @@ class CurlHttpRunner implements HttpRunner
             $curl->httpStatusCode
         );
 
-        call_user_func($this->successCallback, $validResult);
+        \call_user_func($this->successCallback, $validResult);
 
         $this->results->addResult($validResult);
     }
@@ -131,7 +131,7 @@ class CurlHttpRunner implements HttpRunner
             $errorMessage
         );
 
-        call_user_func($this->errorCallback, $errorResult);
+        \call_user_func($this->errorCallback, $errorResult);
 
         $this->results->addResult($errorResult);
     }

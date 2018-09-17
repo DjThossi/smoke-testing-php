@@ -44,7 +44,7 @@ abstract class BaseCollection implements Iterator, Countable
      */
     public function count()
     {
-        return count($this->elements);
+        return \count($this->elements);
     }
 
     /**
