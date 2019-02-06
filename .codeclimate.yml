@@ -6,7 +6,6 @@ engines:
       languages:
         php:
           mass_threshold: 200
-    exclude_fingerprints:
 
   fixme:
     enabled: true
@@ -16,7 +15,6 @@ engines:
     checks:
       CleanCode/StaticAccess:
         enabled: false
-    exclude_fingerprints:
 
 ratings:
   paths:
