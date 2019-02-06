@@ -25,7 +25,5 @@
         "djthossi/ensure": "~1",
         "php-curl-class/php-curl-class": "~7.1",
         "phpunit/phpunit": "~5.7"
-    },
-    "require-dev": {
     }
 }
