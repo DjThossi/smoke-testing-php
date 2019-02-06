@@ -1,6 +1,4 @@
-/.idea
 /bin/
-/vendor/
-composer.phar
 /build/
+/vendor/
 /.php_cs.cache
