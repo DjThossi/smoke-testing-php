@@ -145,7 +145,7 @@ class CurlHttpRunner implements HttpRunner
     {
         $headerData = [];
         foreach ($headers as $key => $value) {
-            $headerData[$key] = \trim($value);
+            $headerData[$key] = trim($value);
         }
 
         return $headerData;

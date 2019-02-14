@@ -18,17 +18,17 @@ abstract class BaseCollection implements Iterator, Countable
      */
     public function key()
     {
-        return \key($this->elements);
+        return key($this->elements);
     }
 
     public function next()
     {
-        \next($this->elements);
+        next($this->elements);
     }
 
     public function rewind()
     {
-        \reset($this->elements);
+        reset($this->elements);
     }
 
     /**
@@ -52,7 +52,7 @@ abstract class BaseCollection implements Iterator, Countable
      */
     protected function getCurrent()
     {
-        return \current($this->elements);
+        return current($this->elements);
     }
 
     /**
