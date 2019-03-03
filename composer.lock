@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2839a09b02e973e34b821b55c5d6fe7",
+    "content-hash": "70e0c8908eee6fe1754adf4cd83f27c7",
     "packages": [
         {
             "name": "djthossi/ensure",
@@ -800,6 +800,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30 09:13:00"
         },
         {
